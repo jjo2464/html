@@ -1,0 +1,33 @@
+<!DOCTYPE html>     <!-- 34일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <style>
+        h3{
+            transition: font-size 5s;
+            transition: color 5s;
+        }
+        h3:hover{
+            font-size: 200%;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var ret = prompt("이름을 입력하세요!", "홍길동");
+        if(ret == null){
+            document.write("입력을 취소하셨습니다.");
+        }
+        else if(ret == ""){
+            document.write("입력하지 않았습니다.")
+        }
+        else{
+            document.write("<h3>" + ret + "님 반갑습니다.");
+        }
+    </script>
+</body>
+</html>

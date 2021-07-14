@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 52일차(25일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            overflow: scroll;
+            display: inline-block;
+            /* overflow = scroll로 해서 해당 div나 리스트만 스크롤가능하게 */
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        var value = "";
+        var oldValue = "";
+        
+        $(document).ready(function () {
+
+            $("button").click(function () {
+                searchAjax("market/all", 1);
+            });
+            
+            $("#id_list").on("click", "tr", function () {           // 두번째 div에 선택한 tr의 비트코인 넣기
+                oldValue = value;       // 이전의 코인의 영어 value를 넣기
+                value = $(this).children("td:eq(1)").text();        // 코인 영어 value
+
+                
+                searchAjax("ticker?markets=" + value, 2);       // div2에 선택한 행의 코인 값 보내기
+                
+                // 색칠 하는 1번째 방법... 나를 제외한 형제 요소들을 화이트로 다시 칠해줌(siblings)
+                $(this).css('background-color', 'yellow');
+                $(this).siblings().css("background-color", 'white');        // 나를 제외한 형제 요소
+
+                // 색칠 하는 2번째 방법...
+                // var prevThis = $(this);                         // 선택한 행 색칠하기
+                // $(this).css('background-color', 'yellow');
+                // $('tr').click(function () {
+                //     $(this).css('background-color', 'yellow');
+                //     prevThis.css('background-color', 'white');   // 새로 행을 선택하면 그 전의 행은 기본으로 돌리기
+                // });
+                
+                if(value != oldValue){
+                    var inner = document.getElementById('selectedTd');      // div3
+                    inner.innerHTML += "<hr>";
+                    inner.innerHTML += "선택된 코인 = " + value + "<br>";
+                }
+
+            });
+
+            $('#selectedCoin').on("click", 'tr', function () {
+                var inIndex = $(this).children("td:eq(0)").text();
+                var inValue = $(this).children("td:eq(1)").text();
+                var inner = document.getElementById('selectedTd');      // div3
+                inner.innerHTML += value + " 의 " + inIndex + "= " + inValue + "<br>";
+
+                var prevThis = $(this);
+                $(this).css('background-color', 'yellow');
+                $('tr').click(function () {
+                    $(this).css('background-color', 'yellow');
+                    prevThis.css('background-color', 'white');   // 새로 행을 선택하면 그 전의 행은 기본으로 돌리기
+                });
+            });
+        });
+        function searchAjax(partUrl, divNum) {
+            $.ajax({
+                url: "https://api.upbit.com/v1/" + partUrl
+                , dataType: "json"
+                , success: function (data) {
+                    alert(JSON.stringify(data));
+                    console.log(JSON.stringify(data));
+                    fn_dataRead(data, divNum);
+                }
+                , error(e) {
+                    console.log(e);
+                }
+            });
+        }
+        function fn_dataRead(d, divNum) {
+            if (divNum == 1) {
+                var divlist = document.getElementById("id_list");
+                var v_tbStr = "<table>";
+                v_tbStr += "<tr> <th>No.</th><th>Market</th><th>Korean</th><th>English</th</tr>";
+                for (var i = 0; i < d.length; i++) {
+                    v_tbStr += "<tr>";
+                    v_tbStr += "<td>" + (i + 1) + "</td>";
+                    v_tbStr += "<td>" + d[i].market + "</td>";
+                    v_tbStr += "<td>" + d[i].korean_name + "</td>";
+                    v_tbStr += "<td>" + d[i].english_name + "</td>";
+                    v_tbStr += "</tr>";
+                }
+                v_tbStr += "</table>";
+                divlist.innerHTML = v_tbStr;
+
+            } else if (divNum == 2) {
+                var coinList = document.getElementById("selectedCoin");
+                var tbStr = "<table>";
+                tbStr += "<tr> <th> col </th> <th> value </th> </tr>";
+                for (var x in d[0]) {           // 이 오브젝트는 하나의 코인으로 키와 벨류 나오는거라 length 가 1임 그래서 d[0]의 값들만 출력하는 거
+                    tbStr += "<tr>";
+                    tbStr += "<td>" + x + "</td>";
+                    tbStr += "<td>" + d[0][x] + "</td>";
+                    tbStr += "</tr>";
+                }
+                tbStr += "</table>";
+                coinList.innerHTML = tbStr;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button>버튼</button> <br>
+    <div id="id_list"></div>
+    <div id="selectedCoin"></div>
+    <div id="selectedTd"></div>
+</body>
+
+</html>

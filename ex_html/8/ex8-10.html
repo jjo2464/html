@@ -1,0 +1,36 @@
+        <!DOCTYPE html>  <!-- 38일차(11일차) 8장 html dom과 document -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+</head>
+<body>
+    <table>
+        <tr><td>
+            <select name="" id="id_sel" onchange="f_selChg();">
+                <option value="원장선생님">JAVA</option>
+                <option value="이선생님">ORACLE</option>
+                <option value="이선생님">JAVASCRIPT</option>
+                <option value="한선생님">JSP</option>
+                <option value="없음" selected>선택하세요.</option>
+            </select>
+        </td>
+        <td><input type="tel" id="id_txt" value="선택값"></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="콤보선택값 읽어오기" onclick="f_readSel();" style="width: 280px;">
+        </td>
+    </tr>
+    <script>
+        function f_selChg(){
+            document.getElementById('id_txt').value = document.getElementById('id_sel').value;
+        }
+        function f_readSel(){
+            alert(document.getElementById('id_sel').value);
+        }
+    </script>
+    </table>
+</body>
+</html>

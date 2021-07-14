@@ -1,0 +1,57 @@
+<!DOCTYPE html>      <!-- 50일차(23일차) 13장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트로 오디오제어</title>
+</head>
+<body>
+    <h3>자바스크립트로 오디오 제어</h3>
+    <hr>
+    <audio src=""></audio>
+    <div id="msg">이곳에 오디오 제어 메시지 출력</div>
+    <button id="play" onclick="control(event);">play</button>
+    <button id="pause" onclick="control(event);">pause</button>
+    <button id="reply" onclick="control(event);">reply</button>
+    <button id="vol-" onclick="control(event);">vol-</button>
+    <button id="vol+" onclick="control(event);">vol+</button>
+    <button id="muto On/Off" onclick="control(event);">mute on/off</button>
+    <script>
+        var div = document.getElementById("msg");
+        var audio = document.getElementById("audio");
+        function control(e){
+            var id = e.target.id;
+
+            if(id == "play"){
+                audio.play();
+                div.innerHTML = "재생 중입니다.";
+            }
+            else if(id == "pause"){
+                audio.pause();
+                div.innerHTML = "일시 중지";
+            }
+            else if(id == "reply"){
+                audio.load();       // 처음부터 다시 로딩함
+                audio.play();
+                div.innerHTML = "처음부터 다시";
+            }
+            else if(id == "vol-"){
+                audio.volume -= 0.1;
+                if(audio.volume < 0.1) audio.volume = 0;
+                div.innerHTML = "일시 중지";
+            }
+            else if(id == "vol+"){
+                audio.volume += 0.1;
+                if(audio.volume > 0.9) audio.volume = 1.0;
+                div.innerHTML = "일시 중지";
+            }
+            else if(id == "muto On/Off"){
+                audio.muted = !audio.muted;
+                if(audio.muted) div.innerHTML="음소거";
+                else div.innerHTML="음소거해제";
+            }
+        }
+    </script>
+</body>
+</html>

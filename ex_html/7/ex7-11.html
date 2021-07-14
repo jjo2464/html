@@ -1,0 +1,22 @@
+<!DOCTYPE html>          <!-- 36일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수</title>
+</head>
+<body>
+    <script>
+        // 함수를 매개변수로 전달 -> 실행
+        function calltenTimes(input_callback){      // callback = input_callback
+            for(var i = 0; i < 10; i++){
+                input_callback();           // 결국 i번만큼 아래의 변수 callback을 실행한다는 말.
+            }
+        }
+        var callback = function(){ console.log('var_callback')};
+        // 함수를 매개변수로 전달
+        calltenTimes(callback);
+    </script>
+</body>
+</html>

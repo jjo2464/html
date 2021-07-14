@@ -1,0 +1,45 @@
+<!DOCTYPE html> <!-- 45일차(18일차) 캔버스 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // context.beginPath();
+        // context.strokeStyle = 'black';
+        // context.arc(100, 70, 30, 0, 2 * Math.PI, false);      // false는 시계방향, 반시계방향 결정
+        // context.stroke();           // 100, 70 은 x, y값 30은 반지름 0은 시작각도 , 1.5 * math.pi 는 끝각도 
+
+        // context.beginPath();
+        // context.strokeStyle = 'blue';
+        // context.arc(100, 70, 40, Math.PI / 2, Math.PI, true);      // false는 시계방향, 반시계방향 결정
+        // context.stroke();           // 100, 70 은 x, y값 30은 반지름
+
+        var cnt = 0;
+        var i = 70;
+
+        var a;
+        a = setInterval(() => {
+            context.beginPath();
+            context.strokeStyle = 'rgb(' + cnt + ',' + cnt + ',' + cnt + ')';
+            context.arc(100, i, 30, 0, 2 * Math.PI, false);
+            cnt = cnt + 5;
+            i++;
+            context.stroke();
+            if (cnt > 255) {
+                clearInterval(a);
+            }
+        }, 50);
+    </script>
+</body>
+
+</html>

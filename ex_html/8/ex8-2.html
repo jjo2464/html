@@ -1,0 +1,22 @@
+<!DOCTYPE html>           <!-- 37일차(10일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 8-3</title>
+    <script>
+        function change(){
+            var p = document.getElementById("firstP");
+            p.innerHTML='나의 <img src="/ex_html/images/k.JPG"> 킹입니다.';
+        }
+    </script>
+</head>
+<body>
+    <h3>innerHTML 활용 : 아래 글자를 클릭하면 멋있는 킹이 보입니다.</h3>
+    <hr>
+    <p id="firstP" style="color: blue;" onclick="change()">
+        여기를 <span style="color: red;">클릭하세요!</span>
+    </p>
+</body>
+</html>

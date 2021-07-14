@@ -1,0 +1,33 @@
+<!DOCTYPE html> <!-- 41일차(14일차)  10장 윈도우와 브라우저 관련 객체 -->
+<html>
+
+<head>
+    <title>window.location으로 웹 사이트 접속</title>
+    <script>
+        function load() {
+            var select = document.getElementById("site");
+            var newW;
+            if(newW == null || newW.closed){
+                newW = window.open(select.options[select.selectedIndex].value,'hi', 'left=300,top=300,width=500,height=500');
+            }else{
+                newW.location = select.options[select.selectedIndex].value;     // 이미 띄워져있다면 
+            }
+            // window.location = select.options[select.selectedIndex].value;
+        }
+    </script>
+</head>
+
+<body>
+    <h3>window.location으로 웹 사이트 접속</h3>
+    <hr>
+    사이트 선택 :
+    <select id="site">
+        <option value="http://www.naver.com" selected>네이버
+        <option value="http://www.google.com">구글
+        <option value="http://www.microsoft.com">마이크로소프트
+    </select>
+    <p>
+        <button onclick="load()">웹 사이트 접속</button>
+</body>
+
+</html>

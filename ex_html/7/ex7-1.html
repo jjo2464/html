@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!-- 35일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 7-1</title>
+</head>
+<body>
+    <script>
+        var today = new Date();     // 객체 생성
+        
+        document.write("현재 시간 = " + today.toJSON() + "<br>");
+        document.write("getDate = " + today.getDate() + "<br>");
+        document.write("getDay = " + today.getDay() + "<br>");
+        document.write("getMonth = " + today.getMonth() + "<br>");
+        document.write("getTime = " + today.getTime() + "<br>");
+        document.write(today.getFullYear() + "<br><br>");
+        document.write(today.getSeconds() + "<br><br>");
+
+        var mystr = new String("자바스크립트");
+        var mystr2 = "자바스크립트2";
+        var my = 123;
+        my = parseInt(my);
+        document.write(typeof(my) + "<br>");
+        document.write("mystr = " + mystr + "<br>");
+        document.write("mystr.length = " + mystr.length + "<br>");
+        document.write("typeof(mystr) = " + typeof(mystr) + "<br>");    /* 객체여서 object 타입이지만 아래 mystr2 는 String 타입임. */
+        document.write("typeof(mystr2) = " + typeof(mystr2) + "<br><br><br>");
+
+        var now = Date.now();       /* 이건 인스턴스화 (객체화) 한게 아니라 그저 현재시간만 가져 온 것임. */
+        document.write("now = " + now + "<br>");
+    </script>
+</body>
+</html>

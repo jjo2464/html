@@ -1,0 +1,34 @@
+<!DOCTYPE html>     <!-- 34일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역변수와 전역변수의 차이</title>
+</head>
+<body>
+    <h3>지역변수와 전역변수</h3>
+    <hr>
+    <script>
+        var x = "전역변수";     //전역변수
+        function f(){
+            var x = "지역변수";  //지역변수
+            document.write("지역변수 x = " + x);
+            document.write("<br>");
+            document.write("전역변수 x = " + this.x);
+        }
+        f();     // 함수 호출
+
+        var ret = prompt("이름을 입력하세요");
+        alert(ret);
+
+        var ret2 = confirm("확인 or 취소만 나옴");
+        if(ret2 == true){       // 확인버튼 눌렀을 때
+            document.write("<br>확인 누름");
+        }
+        else{           // 취소버튼 눌렀을 때
+            alert("취소버튼을 눌렀음.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>         <!-- 42일차(15일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <style>
+        /* duration 트랜지션 진행 시간을 설정 */
+        #wrap .rec{
+            width: 100px; height: 200px; background-color: #ff0000; transition-duration: 3s;
+        }
+        #wrap .rec:hover {
+            width: 200px; height: 100px; background-color: #00ff00;
+        }
+        /* active 마우스클릭과 같은 행동을 했을때 */
+        #wrap .rec:active{
+            width: 200px; height: 200ox; background-color: #0000ff; border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="rec"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>       <!-- 39일차(12일차) 9장 이벤트 기초 및 활용 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습 문제</title>
+    <script>
+        function over(obj){
+            obj.style.opacity = 1;
+            width = 100;
+            obj.style.width = width + 'px';
+        }
+        function out(obj){
+            obj.style.opacity = 0.2;
+        }
+    </script>
+</head>
+<body>
+    <img src="/ex_html/images/abc01.JPG" alt="" width="400px" height="400px" onmouseover="over(this)" onmouseout="out(this)">
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div div{
+            border: 2px solid black;
+            padding: 0;
+            margin: 0;
+        }
+        #div1 {
+            background-color: yellow;
+            width: 45%;
+            height: 450px;
+            display: inline-block;
+        }
+
+        #div2 {
+            background-color: turquoise;
+            width: 45%;
+            height: 450px;
+            display: inline-block;
+        }
+    </style>
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("#bt1").click(function () {
+                $("#div1").append("<b style='color:red' id='b1'>왼쪽!</b>");
+            });
+
+            $("#bt2").click(function () {
+                $("#div2").append("<b style='color:red' id='b2'>오른쪽!</b>");
+            });
+
+            $("#bt3").click(function () {
+                $("b").remove();
+            });
+            $(document).on("click", "b", function () {        // 도큐먼트에서 b를 클릭했을 때의 함수출력
+                if ($(this).attr("id") == "b1") {
+                    alert("div1을 클릭");
+                    $(this).attr("id", "b2");
+                    $(this).text("오른쪽!");
+                    $("#div2").append($(this).clone());
+                    $(this).remove();
+                } else if ($(this).attr("id") == "b2") {
+                    alert("div2을 클릭");
+                    $(this).attr("id", "b1");
+                    $(this).text("왼쪽!");
+                    $("#div1").append($(this).clone());
+                    $(this).remove();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="div1">요소1</div>
+        <div id="div2">요소2</div>
+    </div>
+    <p>i would like to say : </p>
+    <button id="bt1">왼쪽()</button>
+    <button id="bt2">오른쪽()</button>
+    <button id="bt3">remove()</button>
+</body>
+
+</html>

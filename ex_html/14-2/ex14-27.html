@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("p:visible").css('border', '5px dotted skyblue')
+            $("p:hidden").css('display', 'block');      // 히든을 다시 블록으로 바꿈.
+        });
+    </script>
+</head>
+
+<body>
+    <h1>탐색 선택자</h1>
+    <p>내용1</p>
+    <p style="display:none">내용2</p>
+</body>
+
+</html>

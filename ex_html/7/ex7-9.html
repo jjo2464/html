@@ -1,0 +1,32 @@
+<!DOCTYPE html>          <!-- 36일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 스타일</title>
+</head>
+<body>
+    <script>
+        /* 
+        기본 함수 틀
+        function 함수명 (매개변수, ...){}
+
+        최근 많이 쓰는 형태
+        var 함수명 = function(매개변수, ...){}
+        */
+       var  f_func1 = function(p_arr, p_func){
+           for(var i = 0; i < p_arr.length; i++){
+               p_func(i, p_arr[i]);     // 실행할때 p_func 는 f_func2 로 가져옴.
+           }
+       }
+
+       var f_func2 = function(p_inx, p_value){
+           document.write("인덱스 = " + p_inx + " 값은 " + p_value + "입니다. </br>");
+       }
+
+       var v_arr = ['값1', '값2', '값3', '값4'];
+       f_func1(v_arr, f_func2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>      <!-- 46일차(19일차) 캔버스 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="300" height="200" style="background-color: aliceblue;"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.moveTo(20, 20);
+        context.bezierCurveTo(20, 100, 200, 100, 200, 20);      // 1번 세트(20,100) 과 2번 세트(200,100) 은 커브되는 라인의 x,y좌표 이고 마지막이 끝좌표
+        context.lineWidth = 10;
+        context.strokeStyle = 'black';
+        context.stroke();
+    </script>
+</body>
+</html>

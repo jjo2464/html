@@ -1,0 +1,47 @@
+        <!DOCTYPE html>  <!-- 38일차(11일차) 8장 html dom과 document -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+    <style>
+        table, tr, td{
+            border: 1;
+            border-style:  solid;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>아이디</td><td><input type="text" id="id_id" value=""></td>
+            <td>비번</td><td><input type="password" id="id_pw" value=""></td>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <input type="button" value="체크" onclick="f_check()" style="width: 100%;">
+                    </td>
+                </tr>
+            </tfoot>
+        </tr>
+    </table>
+
+    <script>
+        function f_check(){
+            var v_id = document.getElementById("id_id").value;
+            if(v_id == ""){
+                alert("아이디를 쓰세요.");
+                document.getElementById("id_id").focus();   //커서 되돌리기
+                return;
+            }
+            var v_pw = document.getElementById('id_pw').value;
+            if(v_pw == ""){
+                alert("비밀번호를 쓰세요.");
+                document.getElementById("id_pw").focus();   //커서 되돌리기
+                return;
+            }
+        }
+    </script>
+</body>
+</html>

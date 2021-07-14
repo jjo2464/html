@@ -1,0 +1,30 @@
+<!DOCTYPE html> <!-- 41일차(14일차)  10장 윈도우와 브라우저 관련 객체 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자식 윈도우에게 데이터 보내기</title>
+    <script>
+        var openWin;
+        function load(url) {
+            window.name = 'parentForm';
+            if (openWin == null || openWin.closed) {
+                openWin = window.open(url, 'childForm', 'width=400, height=400');
+                openWin.onload = function () {
+                    openWin.document.getElementById('input1').value = document.getElementById('output1').value;
+                }
+            } else {
+                openWin.document.getElementById('input1').value = document.getElementById('output1').value;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="output1"><button onclick="load('ex10-7.html');">자식 열기</button>
+
+</body>
+
+</html>

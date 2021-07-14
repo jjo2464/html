@@ -1,0 +1,107 @@
+<!DOCTYPE html> <!-- 44일차(17일차)  반응형.ppt -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        #space {
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+        }
+
+        #earthDiv {
+            left: 50%;
+            top: 30%;
+            position: absolute;
+            max-width: 400px;
+            height: 60%;
+            /* border: 15px solid white; */
+            animation: ball 12s linear infinite;
+        }
+
+        #earth {
+            width: 400px;
+            height: 400px;
+            animation: ball 5s linear infinite;
+        }
+
+        #moonDiv {
+            left: 50%;
+            top: 20%;
+            position: absolute;
+            width: 400px;
+            height: 80%;
+            /* border: 15px solid white; */
+            animation: ball 12s linear infinite;
+        }
+        #mooninDiv {
+            top: 0;
+            height: 40%;
+            /* border: 15px solid purple; */
+            animation: ball 5s linear infinite;
+        }
+        #moon {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            animation: ball 3s linear infinite;
+        }
+
+        #sun {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            left: 3700px;
+            top: 2000px;
+            animation: ball 10s linear infinite;
+        }
+
+        @keyframes ball {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(90deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(270deg);
+            }
+
+            100% {
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="/ex_html/images/space2.jpg" alt="" id="space">
+        <div id="moonDiv">
+            <div id="mooninDiv">
+                <img src="/ex_html/images/moon.png" alt="" id="moon">
+            </div>
+        </div>
+        <div id="earthDiv">
+            <img src="/ex_html/images/earth.png" alt="" id="earth">
+        </div>
+        <img src="/ex_html/images/sun.png" alt="" id="sun">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#menu li").each(function(i, k){          // i 는 인덱스, k 는 해당 인덱스의 객체
+                console.log("index = " + i);
+                console.log("element = " + k);
+            });
+            $.each($("#menu li"),function(i, k){
+                console.log("index = " + i);
+                console.log("element = " + k.innerHTML);
+            });
+
+            var arr = ['팽수', '길동', '팽수2'];
+            $.each(arr, function(i, k){
+                console.log("index = " + i);
+                console.log("value = " + k);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>탐색 선택자</h1>
+    <ul id="menu">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+    </ul>
+</body>
+
+</html>

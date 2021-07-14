@@ -1,0 +1,90 @@
+<!DOCTYPE html> <!-- 50일차(23일차) 14장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-6에서 저장한 방명록 데이터를 기반으로 여기서 출력</title>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            position: relative;
+            width: 1000px;
+        }
+
+        div {
+            width: 33%;
+            height: 100%;
+            display: inline-block;
+            min-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>방명록</h1>
+    <div id="center"></div>
+
+    <script>
+        var v_disp = document.getElementById("center");
+        var v_tbName = 'Board';
+        var v_localData = JSON.parse(localStorage.getItem(v_tbName));           //위치와 관계없이 이 getitem 괄호안에 있는 key의 value들만 가져옴.      오브젝트임.
+
+        var v_total = v_localData.length;
+        var v_tbStr = "";
+        v_tbStr = "<br><br>";
+        v_tbStr += "<table>";
+        v_tbStr += "<tr> <td>순번</td><td>체크</td><td>이름</td><td>내용</td><td>등록일</td></tr>";
+        if (v_total != 0) {
+            for (var i = 0; i < v_total; i++) {
+                v_tbStr += "<tr>";
+                v_tbStr += "<td>" + (i + 1) + "</td>";
+                v_tbStr += "<td> <input type='checkbox' name='nm_del' value='" + v_localData[i].pk + "'></td>";
+                v_tbStr += "<td>" + v_localData[i].name + "</td>";
+                v_tbStr += "<td>" + v_localData[i].content + "</td>";
+                v_tbStr += "<td>" + v_localData[i].date + "</td>";
+                v_tbStr += "</tr>";
+            }
+            v_tbStr += "</table>";
+            v_tbStr += "<button onclick='fn_delete();'>삭제</button>";
+            v_disp.innerHTML = v_tbStr;
+        } else {
+            alert("게시글이 존재하지 않습니다.");
+            v_tbStr += "</table>";
+            var btn = document.createElement("button");
+            btn.innerHTML = "돌아가기";
+            btn.setAttribute("onclick", "window.open('ex14-6.html', '_blank, left=300, top=300, width=500, height=300')");
+            v_disp.innerHTML = v_tbStr;
+            v_disp.appendChild(btn);
+        }
+
+        function fn_delete() {
+            var check = document.getElementsByName("nm_del");
+            // 체크 된 목록을 담을 배열
+            var dellist = [];
+            for (var i = 0; i < check.length; i++) {
+                if (check[i].checked) {
+                    dellist.push(check[i].value);       // pk인 키값만 가져옴.
+                }
+            }
+
+            // dellist에 담겨있는 키 값을 가지고 요소를 삭제
+            for (var i = 0; i < v_localData.length; i++) {
+                for (var x = 0; x < dellist.length; x++) {
+                    if (v_localData[i].pk == dellist[x]) {
+                        v_localData.splice(i, 1);
+                    }
+                }
+            }
+            // 다시 테이블에 바뀐 로컬데이터를 넣어줌
+            localStorage.setItem(v_tbName, JSON.stringify(v_localData));    // 제이슨 스트링형식으로 변환
+            console.log(JSON.stringify(v_localData));
+            location.reload();  // 화면 새로고침
+        }
+    </script>
+</body>
+
+</html>

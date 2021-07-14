@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면 크기가 변함에 따라 이미지가 바뀜</title>
+</head>
+<body>
+    <picture>
+        <source srcset="/ex_html/images/shop-large.jpg" media="(min-width:1024px)">
+        <source srcset="/ex_html/images/shop-medium.jpg" media="(min-width:768px)">
+        <source srcset="/ex_html/images/shop-small.jpg" media="(min-width:320px)">
+        <img src="/ex_html/images/shop.jpg" style="width: 100%;" alt="">            <!-- 위에 media 규칙을 정해놓음. min-width 에 해당하는 크기에 도달하면 알아서 이미지가 바뀌고 디폴트는 img -->
+    </picture>
+</body>
+</html>

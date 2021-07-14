@@ -1,0 +1,38 @@
+<!DOCTYPE html>             <!-- 49일차(22일차) 14장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // JSON
+        var orderJSON = '{' +
+            '"name": "HongGilDong"' +
+            ',"age": 25' +
+            ',"address": { "nation": "Korea", "city": "Seoul", "postalCode": "123-456" }' +
+            ',"특기": ["검술", "무술"]' +
+            ', "phone": "010-123-4567" }';
+        // JSON 문자열을 파싱하여 자바스크립트 객체로 변환합니다.
+
+        console.log(typeof orderJSON);          // 스트링타입임.
+        
+        var order = JSON.parse(orderJSON);      // 스트링을 오브젝트로 변환해줌.
+        document.writeln('order.name: ' + order.name + '<br/>');
+        document.writeln('order.age: ' + order.age + '<br/>');
+        document.writeln('<br/>');
+        console.log(order);
+        for (var add in order.address) {
+            document.writeln(add + ' : ' + order.address[add] + '<br/>');
+        }
+        document.writeln('<br/>');
+        document.writeln('order.baroOn: ' + order.특기 + '<br/>');
+        document.writeln('<br/>');
+    </script>
+    
+</body>
+</html>
+
+

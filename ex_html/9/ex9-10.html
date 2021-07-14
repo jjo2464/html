@@ -1,0 +1,26 @@
+<!DOCTYPE html>            <!-- 40일차(13일차) 9장 이벤트 기초 및 활용 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 9-16</title>
+    <script>
+        function checkFilled(obj){
+            if(obj.value == ""){
+                alert("이름 input의 포커스를 잃었습니다! enter name!!");
+                obj.focus();        // obj에 다시 포커스 맞춤.
+            }
+        }
+    </script>
+</head>
+<body onload="document.getElementById('name').focus();">
+    <h3>onfocus 와 onblur</h3>
+    <hr>
+    <p>이름을 입력하지 않고 다른 창으로 이동할 수 없습니다.</p>
+    <form action="">
+        이름 <input type="text" id="name" onblur="checkFilled(this)"><p>      <!-- 포커스를 잃을때 checkFilled 발생 -->
+        학번 <input type="text" name="" id="">
+    </form>
+</body>
+</html>

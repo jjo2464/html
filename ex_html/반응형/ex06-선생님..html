@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    /*  position 포지션 */
+    #id_sun{
+        border-radius: 100px;
+        position: absolute;
+    }
+    #id_earth{
+        border-radius: 75px;
+        position: absolute;
+    }
+    #id_moon{
+        border-radius: 50px;
+        position: absolute; 
+    }
+    body {
+        background-size: 800px 800x;
+        background-image: url('/ex_html/images/space2.jpg');
+
+        opacity: 0.6;
+    }
+</style>
+
+</head>
+<body>
+    <!-- /로 시작하면 절대경로 (웹서버 기준!!! OS기준 아님)
+         .이나 ..으로 시작하면 상대경로 -->
+    <img id="id_sun" src="/ex_html/images/sun.png" width="200" height="200">
+    <img id="id_earth" src="/ex_html/images/earth.png" width="150" height="150">
+    <img id="id_moon" src="/ex_html/images/moon.png" width="100" height="100">
+
+<script>
+    // 각 객체 선언
+    var sun = document.getElementById("id_sun");
+    var earth = document.getElementById("id_earth");
+    var moon = document.getElementById("id_moon");
+
+
+    // 중심축 태양의 위치 설정
+    var v_centerX; // 화면 중심X
+    var v_centerY; // 화면 중심Y
+   
+    window.onload = function(){
+        v_centerX = window.innerWidth / 2;
+        v_centerY = window.innerHeight / 2;
+        sun.style.left = (window.innerWidth - 100)/2 + "px";
+        sun.style.top = (window.innerHeight - 100)/2 + "px";
+        f_sunRotate();
+    }
+
+    var v_sunGak = 0;
+
+    function f_sunRotate(){
+
+        v_sunGak = (v_sunGak + 10) % 360;
+        sun.style.transform = "rotate(" + v_sunGak + "deg)";
+        setTimeout(f_sunRotate,300);            // 계속 호출
+
+    }
+
+    // 공전할 객체의 초기각도 부여
+    var earthAngle = 0;
+    var moonAngle = 0;
+
+
+    //setInterval을 사용해서 일정간격으로 공전하게 
+    setInterval(function(){
+
+        var earthLeft = parseInt(sun.style.left) + 400*Math.cos(earthAngle);
+        var earthTop = parseInt(sun.style.top) + 400*Math.sin(earthAngle);
+        var moonLeft = earthLeft + 200*Math.cos(moonAngle);
+        var moonTop = earthTop + 200*Math.sin(moonAngle);
+
+        //위치 이동하게끔
+        earth.style.left = earthLeft + "px";
+        earth.style.top = earthTop + "px";
+        moon.style.left = moonLeft + "px";
+        moon.style.top = moonTop + "px";
+
+        //각도 변경
+        earthAngle += 0.1;
+        moonAngle += 0.3;
+    }, 50);
+
+</script>
+</body>
+</html>

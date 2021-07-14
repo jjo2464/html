@@ -1,0 +1,44 @@
+<!DOCTYPE html>      <!-- 42일차(15일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px; height: 100px; float: left; margin: 20px;
+            overflow: hidden;
+        }
+        .bg-tr{
+            background-color: skyblue;
+            transition: all ease 1s;
+        }
+        .bg-tr:hover{
+            background-color: blue;
+        }
+        .border-tr{
+            background-color: orange; border: 3px solid black;
+            border: 3px solid black;
+            -moz-transition: all linear 1.5s;
+            transition: all ease 5s;
+
+        }
+        .border-tr:hover{
+            border: 3px solid red;
+            border-radius: 50%;
+        }
+        .bg-tr:active{
+            transform: rotate(-15deg);
+        }
+        div img{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-tr" id="zxc"></div>
+    <div class="border-tr" onclick="inputText()" id="asd"> 
+    </div>
+</body>
+</html>

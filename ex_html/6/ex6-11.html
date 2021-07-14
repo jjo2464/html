@@ -1,0 +1,47 @@
+<!DOCTYPE html>           <!-- 35일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swtich 문 6-16 예제</title>
+</head>
+<body>
+    <h3>Swtich문으로 커피 주문</h3>
+    <hr>
+    <script>
+        var price = 0;
+        var ord = prompt('몇 잔을 주문하시겠어요?', 'ex = 3 (숫자로만)');
+        var sum = 0;
+        while(ord != null){
+            if( ord != parseInt(ord)){
+                alert("숫자를 입력해주세요.");
+                ord = prompt('몇 잔을 주문하시겠어요?', 'ex = 3 (숫자로만)');
+             }else{
+                for(var i = ord; i > 0; i--){
+                    var cof = prompt(i +' 무슨 커피를 주문하시겠어요?', '에스프레소');
+                    switch(cof){
+                        case "에스프레소": 
+                        case "espresso": price = 2000; sum += price; document.write((ord - i + 1) + "번째 잔은 에스프레소이며 가격은 " + price + "입니다.<br>");  break;
+                        case "카푸치노": price = 3000; sum += price; document.write((ord - i + 1) + "번째 잔은 카푸치노이며 가격은 " + price + "입니다.<br>"); break;
+                    case "카페라떼": price = 4000; sum += price; document.write((ord - i + 1) + "번째 잔은 카페라떼이며 가격은 " + price + "입니다.<br>"); break;
+                    default: i++;
+                    alert("말씀하신 " + cof + "는 매장에 없습니다. 다시 입력해주세요.");
+                    }
+                }   
+            break;
+            }
+        }
+        if(price != 0){
+            document.write("총 " + ord + "잔의 가격은 " + sum + "입니다. <br><br><br>");
+        }
+        
+        for(var i = 10; i < 35; i+=5){
+            document.write("<span style='font-size:" + i + "px;'>");
+            document.write(i + "크기 </span>");
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>             <!-- 31days -->   <!-- form 설명 3장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹폼 예제</title>
+</head>
+<body>
+    <h3>웹 폼</h3>
+    <hr>   <!-- name 이 q인 이유는 해당 사이트에서 검색을 해보면 주소 그 뒤에 ? 이후 구문에 나와있음. 검색 했을 때 들어온 데이터의 이름이 나옴. -->
+    <form name="sform" action="https://www.melon.com/search/total/index.htm" method="GET" target="_blank">
+        검색어 : <input name="q" type="text" >   <!-- value="안녕하세요." 이걸 input 내에 넣으면 시작하자마자 value 값이 입력되어있음. -->
+        페이지 : <input name="page" type="number"> <input type="submit" value="검색"> <br>
+        <input type="reset" value="리셋">
+    </form>
+    <br><br><br><br>
+    <hr>
+    <br><br><br><br>
+    <form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   이름 : <input type="text" value=""> <br>
+        &nbsp;패스워드 : <input type="password"  value="" maxlength="12"> (12자 이하로 입력하세요.) <br>
+
+    </form>
+    <br><br><br><br>
+    <hr>
+    <br><br><br><br>
+    예제 네이버 평점리뷰 창에서 입력한 수만큼의 페이지로 넘어가게 만들기.
+    <form action="https://movie.naver.com/movie/board/review/list.nhn" method="GET" target="_blank" >
+        검색어 : <input name="sword" type="text" value="">       <input type="submit" value="검색"> <br>
+        평점검색 페이지 번호 : <input name="page" type="text" value="">         <input type="submit" value="검색"> <br>
+        <br>
+        리뷰 : <textarea cols="30" rows="5" >
+            이곳에 리뷰작성
+        </textarea>
+    </form>
+
+    <br><br><br><br>
+    <hr>
+    <br><br><br><br>
+
+    네이버에서 검색하며 페이지 수도 조절하는 웹폼<br>
+    <h3>검색</h3>
+    <img src="images/다운로드.png" width="300" height="150" alt="사진이없음." title="네이버"><br>
+    <form action="https://search.naver.com/search.naver" target="_blank" method="GET">
+        검색어 : <input type="text" value="" name="query"> <br>
+        페이지 : <input type="number" value="" name="page"> <br>
+        <input type="submit" value="검색">
+    </form>
+</body>
+</html>

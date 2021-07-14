@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">      <!-- 55일차(28일차) 14장 jQuery 54일은 자습해서 패스-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:8080/study/01basic/jsTest.jsp" method="get">     
+        이름 <input type="text" name="v_name"> <br>
+        아이디 <input type="text" name="v_id" id=""> <br>
+        <input type="submit" value="전송">
+        <input type="reset" value="삭제">
+    </form>
+
+    <!-- 전송 방식 
+        Get = 값이 주소 표시줄에 보임   (한글은 글자가 깨져서 인코딩 처리 추가적으로 해줘야함.) 보내는 쪽에서 용량 제한이 있음. Get방식은 위에 url에서 보내는 객체들의 정보가 다 나오는데 post 방식은 숨겨서 보냄.
+        post = 주소 표시줄에 보이지 않음. 보내는쪽의 용량에 제한이 없음.
+     -->
+    <form action="http://localhost:8080/study/01basic/jsTest.jsp" method="POST" onsubmit="return fn_check()">           <!-- submit제출 이 되기전에 이 함수 먼저 호출됌. -->
+        이름2 <input type="text" name="v_name"> <br>
+        아이디2 <input type="text" name="v_id" id=""> <br>
+        <input type="submit" value="전송">
+        <input type="reset" value="삭제">
+    </form>
+
+    <script>
+        function fn_check(){
+            // return false;       // 이렇게 리턴값을 false로 하면 submit이 되지 않음. 뭐 어떤 조건을 주고 조건에 해당하면 true로 되게 설정이 가능함.
+            return true;
+        }
+
+    </script>
+</body>
+</html>

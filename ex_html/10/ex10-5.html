@@ -1,0 +1,50 @@
+<!DOCTYPE html>         <!-- 40일차(13일차) 10장 윈도우와 브라우저 관련 객체 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #bigdiv {
+            margin-left: 250px;
+            width: 50%;         /* width는 자동으로 생성?되는 느낌이라 바로 퍼센트 써도되는데, height는 크기를 지정해주어야함. px로 그 다음부터는 하위객체한테 그냥 퍼센트로만 크기 지정이 가능함. */
+            height: 250px;
+            padding: 0;
+        }
+
+        #smalldiv {
+            border: 3px solid black;
+            width: 100%;
+            height: 70%;
+        }
+    </style>
+    <script>
+        function newrandom() {
+            var random = new Array(5);
+            var spanText = document.getElementById('ran');
+            var a = "";
+            spanText.innerText = "";
+            for (var i = 0; i < random.length; i++) {
+                random[i] = Math.ceil(Math.random() * 49);
+                console.log(random[i]);
+                a += random[i] + " ";
+
+            }
+            spanText.innerText += a;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="bigdiv">
+        <div id="smalldiv">오늘의 행운의 숫자 <br>
+            로또 번호는 !!!! <br>
+            <span id="ran">랜덤한 숫자</span>
+        </div>
+        <button onclick="newrandom()" style="margin-left: 80%;">로또번호 발생</button>
+    </div>
+</body>
+
+</html>

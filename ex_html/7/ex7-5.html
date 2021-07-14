@@ -1,0 +1,18 @@
+<!DOCTYPE html>      <!-- 36일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크립트 상에서 띄어쓰기가 다름</title>
+</head>
+<body>
+    <!-- 스크립트 차원과 HTML 차원의 줄바꿈은 다르다. \n을 사용함 -->
+    <script>
+        document.write("줄바꿈 : html 이기 때문에 \n을 공백으로 인식 <br>은 인식 <br>");
+        document.write("띄어쓰기 : html                띄어쓰기는 &nbsp&nbsp&nbsp&nbsp; 이런식");
+        alert("줄바꿈 : 여기는 자바스크립트이기 떄문에 \n이 인식됌. <br>은 그냥 문자열");
+        alert("띄어쓰기 : 여기는 자바스크립트 띄어쓰기는               그냥 띄우면 됌. &nbsp 은 그냥 문자열");
+    </script>
+</body>
+</html>

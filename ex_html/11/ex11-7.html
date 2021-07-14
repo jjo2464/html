@@ -1,0 +1,25 @@
+<!DOCTYPE html> <!-- 45일차(18일차) 캔버스 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="500" height="300"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        context.font = "100px arial";
+        context.strokeStyle = "blue";
+        context.lineWidth = 1;
+        context.strokeText("Javascript", 30, 100);
+    </script>
+
+</body>
+
+</html>

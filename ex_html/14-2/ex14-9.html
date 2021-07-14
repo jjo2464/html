@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#target").val($("#target").val().replaceAll('.', ''));       // .을 제외하여 만들고 다시 value에 넣어줌.
+            });
+        });
+    </script>
+</head>
+
+<body>
+    이름 : <input type="text" id="target" value="">
+    <button>animate()</button>
+</body>
+
+</html>

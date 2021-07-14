@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 55일차(28일차) 14장 jQuery 54일은 자습해서 패스-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aqua{ background-color: aqua; }
+        .red{ background-color: red; }
+        .green{ background-color: green; }
+        .yellow{ background-color: yellow; }
+    </style>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("li").on('click', 'input', function(){
+                var colorName = $(this).val();
+                $(this).parent().toggleClass(colorName);
+                $('#' + colorName).toggleClass(colorName);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>아쿠아<input type="checkbox" name="v_check" value="aqua"></li>
+        <li>래드<input type="checkbox" name="v_check" value="red"></li>
+        <li>그린<input type="checkbox" name="v_check" value="green"></li>
+        <li>옐로우<input type="checkbox" name="v_check" value="yellow"></li>
+    </ul>
+    <ul id="aqua"><li>아쿠아 영역입니다.</li></ul>
+    <ul id="red"><li>래드 영역입니다.</li></ul>
+    <ul id="green"><li>그린 영역입니다.</li></ul>
+    <ul id="yellow"><li>옐로우 영역입니다.</li></ul>
+</body>
+
+</html>

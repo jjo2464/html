@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#second").prev().css("border", "1px solid red");     // 부모자식 관계가 아닌 동등한 급의 객체중 내 이전의 객체
+            $("#second").next().css("border", "1px solid red");    // 부모자식 관계가 아닌 동등한 급의 객체중 내 다음의 객체
+        });
+    </script>
+</head>
+
+<body>
+    <h1>인접 관계 선택자</h1>
+    <ul id="wrap">
+        <li>내용1</li>
+        <li id="second">내용2</li>
+        <li>내용3</li>
+    </ul>
+</body>
+
+</html>

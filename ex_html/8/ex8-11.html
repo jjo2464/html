@@ -1,0 +1,27 @@
+        <!DOCTYPE html>  <!-- 38일차(11일차) 8장 html dom과 document -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+</head>
+<body>
+    남 <input type="radio" name="yt" value="m">
+    여 <input type="radio" name="yt" value="f" checked>
+    <input type="button" value="클릭" onclick="f_check('yt');">
+    동물 <input type="radio" name="dtt" value="d">
+    식물 <input type="radio" name="dtt" value="s" checked>
+    <input type="button" value="클릭" onclick="f_check('dtt');">
+    <script>
+        function f_check(param){
+            var v_rdGrp = document.getElementsByName(param);
+            for(var i = 0; i < v_rdGrp.length; i++){
+                if(v_rdGrp[i].checked){         // 체크가 되었다. 안된 애들은 if절 안탐.
+                    alert('체크된 value = ' + v_rdGrp[i].value);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

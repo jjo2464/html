@@ -1,0 +1,48 @@
+<!DOCTYPE html>       <!-- 36일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <script>
+        /* 
+        자바스크립트 함수 생성 방식
+        1. 함수 선언문 / function statement
+        2. 함수 표현식 / function expression
+        3. 생성자 함수
+        */
+        // 1. 함수 선언문
+        // 선언적 함수라 하며 함수의 이름이 존재하고 글로벌 영역에 먼저 등록됌.
+        // (함수의 호이스팅) 이 되어 run time 전에 이미 등록이 됌.
+        console.log("1 = " + add(3,4));     // 선언적 함수는 런타임 전에 실행이 되기 떄문에 
+        function add(x,y){                  // 선언적 함수 윗쪽에서 먼저 사용해도 오류가 나지 않음.
+            return x + y;
+        }
+        console.log("2 = " + add(3,4));
+
+
+        // 2. 함수 표현식
+        // 익명 함수
+        // 형태는 함수이지만 이름이 없음. 선언적 함수와 다르게 일반 문장과 같이 run time 시에 실행함.
+        var f_output = function(){ alert("익명함수")};
+        alert(f_output);
+
+
+        // 3. 생성자 함수
+        console.log("add4 1 = " + add4(2,4));        // 이건 아래에서 생성자 함수를 등록해서 오류가 남.
+        var add4 = function mult(x,y){
+            return x * y;
+        };      // 변수에 추가한거라 마지막에 ; 붙여야함.
+        console.log("add4 2 = " + add4(2,4));
+
+
+        // 함수 호출 또한 다른 언어와 다르게 자유로움.
+        // 함수를 호출할 때 함수 형식에 맞춰 인자를 넘기지 않아도 에러가 안남.
+        alert('원래 매개변수 1', '오버된 매개변수');    // 원래 1개인데 인자를 2개 넣어도 오류가 안남.
+        prompt("원래매개변수"); // 원래 2개 있어야함. 1개만 넣어도 오류가 안남.
+    </script>
+</body>
+</html>

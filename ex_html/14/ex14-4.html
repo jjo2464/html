@@ -1,0 +1,54 @@
+<!DOCTYPE html> <!-- 49일차(22일차) 14장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ajax = 웹서버를 통해 데이터를 주고 받는 것 -->
+    <button id="ajaxButton">request</button>
+    <div id="inner"></div>
+    <script>
+        var divV = document.getElementById("inner");
+        var req;
+        document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+        function makeRequest() {
+            req = new XMLHttpRequest();
+            req.onreadystatechange = alertContents;    // 정상적으로 접속이 되면 함수 alertContents를 불러옴.
+            req.open("GET", 'https://www.op.gg/summoner/userName=asdsad'); // json형식으로되어있는 텍스트 데이터(스트링)
+            req.send();
+        }
+        function alertContents() {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                alert("asd");
+                if (req.status == 200) {
+                    alert(req.responseText);
+                    var order = JSON.parse(req.responseText);       //json 형식 데이터 파일을 자바스크립트 객체로 파싱(변환)함
+                    // 오브젝트 전체 출력 1번째 방법
+                    for (var i in order) {        // 객체를 전체 출력
+                        // console.log('key = ' + i + ', values = ' + order[i]);       // 처음에는 전체 length 가 1이라 여기서 for문을 한번 더 써야됌.
+                        for (var x in order[i]) {
+                            divV.innerHTML += 'key = ' + x + ', values = ' + order[i][x] + '<br>';
+                            // console.log('key = ' + x + ', values = ' + order[i][x]);
+                        }
+                    }
+
+                    // 오브젝트 전체 출력 2번째 방법 이건 키값만 뽑음.
+                    // for(var i in order){    
+                    //         var keylist = Object.keys(order[i]);
+                    //         divV.innerHTML = keylist;
+                    // }
+                    console.log("오브젝트 전체 = " + order);
+                } else {
+                    alert("문제 있음");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

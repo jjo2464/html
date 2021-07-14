@@ -1,0 +1,76 @@
+<!DOCTYPE html> <!-- 49일차(22일차) 14장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json의 오브젝트 키 값들을 셀렉트 박스에 넣기.</title>
+</head>
+
+<body>
+    <!-- ajax = 웹서버를 통해 데이터를 주고 받는 것 -->
+    <button id="ajaxButton" onclick='makeRequest();'>request</button>
+    <div id="inner">
+        <div id="inner2"></div>
+    </div>
+    <script>
+        var divV = document.getElementById("inner");
+        var div2 = document.getElementById("inner2");
+
+        var req;
+        var req2;
+
+        function makeRequest(address) {
+            req = new XMLHttpRequest();
+            req.onreadystatechange = alertContents;    // 정상적으로 접속이 되면 함수 alertContents를 불러옴.
+            req.open("GET", "https://api.upbit.com/v1/market/all"); // json형식으로되어있는 텍스트 데이터(스트링)
+            req.send();
+        }
+
+        function alertContents() {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    alert(req.responseText);
+                    var order = JSON.parse(req.responseText);       //json 형식 데이터 파일을 자바스크립트 객체로 파싱(변환)함
+                    var sel = document.createElement("select");
+                    sel.setAttribute("id", "selsel");
+                    sel.addEventListener('change', draw);
+                    // console.log("1" + order[1].market);
+                    for (var x in order) {
+                        sel.innerHTML += "<option value=" + order[x].market + ">" + order[x].market + "</option>";
+                        
+                    }
+                    divV.appendChild(sel);
+                } else {
+                    alert("문제 있음");
+                }
+            }
+        }
+
+        function draw() {
+            var sel = document.getElementById("selsel");
+            var code = sel.options[sel.selectedIndex].value;
+
+            order = JSON.parse(req.responseText);
+            div2.innerHTML = "korean_name = " + order[sel.selectedIndex].korean_name + "<br>";
+            alert(code);
+            req2 = new XMLHttpRequest();
+            req2.onreadystatechange = retry;
+            req2.open("GET", 'https://api.upbit.com/v1/ticker?markets=' + code); // json형식으로되어있는 텍스트 데이터(스트링)           //trade_price 가 코인 현재가격
+            req2.send();   
+        }
+        function retry(){
+            if(req2.readyState == XMLHttpRequest.DONE){
+                if(req2.status == 200){
+                    var order2 = JSON.parse(req2.responseText);
+                    div2.innerHTML += "현재 가격 = " + order2[0].trade_price;
+                }else{
+                    alert("문제 있음2");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

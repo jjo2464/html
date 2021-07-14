@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <style>
+        div.out{
+            width: 200px;
+            height: 60px;
+            background-color: yellowgreen;
+        }
+    </style>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+</head>
+
+<body>
+    <div class="out">
+        <p>마우스를 여기로 움직이세요.</p>
+        <p>0</p>
+    </div>
+    <input type="text" id="id_input">
+
+    <script>
+        var i = 0;
+        $(document).ready(function(){
+            $("div.out").mouseover(function(){
+                $("p:first", this).text("mouser over");
+                $("p:last", this).text(++i);
+                $("#id_input").val("인풋에 넣기");
+                var value = $("#id_input").val();
+                alert(value);
+            });
+        });
+    </script>
+</body>
+
+</html>

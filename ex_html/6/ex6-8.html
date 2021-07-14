@@ -1,0 +1,42 @@
+<!DOCTYPE html>      <!-- 34일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 정리 2</title>
+</head>
+<body>
+    <script>
+        //데이터 삽입
+        var num = 10;
+        var str = '자바스크립트';
+        var point = {x : 300, y : 400}; //객체
+        var arr = [10, 20, 30, 40];     // 배열
+        // 함수
+        var add = function(op1, op2){
+            return op1 + op2;
+        }
+        document.writeln('num = ' + num + '</br>');
+        document.writeln('str = ' + str + '</br><hr>');
+
+        document.write(Object.keys(point) + '</br><hr>');
+        document.writeln('point.x = ' + point.x + '</br>');
+        point.x += 'ㅁㄴㅇㄴㅁㅇ';
+        document.writeln('point.x = ' + point.x + '</br>');
+        document.writeln('point 자체의 타입 = ' + typeof(point) + '</br>');
+        document.writeln('point["y"] = ' + point['y'] + '</br><hr>');
+
+
+        var arr2 = [];
+        document.write(arr2.length + '</br>');
+        arr2.push(10);
+        document.write(arr2[0] + '</br>');
+        document.writeln('arr[3] = ' + arr[3] + '</br><hr>');
+
+        document.writeln('add = ' + add + '</br>');
+        document.writeln('add(2,3) = ' + add(2,3) + '</br>');
+    </script>
+
+</body>
+</html>

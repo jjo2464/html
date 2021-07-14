@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:900');
+
+h1 {
+	font-family: 'Exo 2', sans-serif;
+	font-size: 8.5vw;
+	color: white;
+	padding: 5rem 0;
+	text-shadow: 0px 4px 48px rgba(255,255,255,0.2);
+}
+
+.container {
+	position: relative;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	background-image:  url(https://images.unsplash.com/photo-1502726299822-6f583f972e02);
+	background-blend-mode: multiply;
+	background-size: cover;
+	    
+}
+
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 15rem;
+    transform: translateX(-50%);
+	opacity: 0.75;
+	overflow: visible;
+}
+
+.bubbles  {
+	width: 100%;
+	height: auto;
+}
+	
+.bubbles circle {
+		stroke: white;
+		fill: none;
+	}
+.bubbles circle> g > g:nth-of-type(3n)  {
+    stroke: #87f5fb;
+}
+	
+
+
+@keyframes wobble {
+	
+	33% {
+		transform: translateX(-50px);
+	}
+	
+	66% {
+		transform: translateX(50px);
+	}
+	
+}
+
+@keyframes up {
+
+	0% {
+		opacity: 0;
+	}
+	
+	10%, 90% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 0;
+		transform: translateY(-1024px);
+	}
+	
+}

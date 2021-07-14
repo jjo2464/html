@@ -1,0 +1,65 @@
+<!DOCTYPE html>       <!-- 37일차(10일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 8-10</title>
+    <script>
+        var ch = 0;
+        function createDIV(){
+            ch += 1;
+            var obj = document.getElementById("parent");
+            var newDIV = document.createElement("div");
+            newDIV.innerHTML = ch
+            newDIV.innerHTML += ' 번째로 새로 생성된 DIV입니다. <input type="button" value="자기삭제" onclick="deleteMe()">';
+            newDIV.setAttribute('id', 'myDiv');
+            if(ch % 2 == 0){
+                newDIV.style.backgroundColor = 'royalblue';
+            }else{
+                newDIV.style.backgroundColor = 'snow';
+            }
+
+            obj.appendChild(newDIV);        // 위에 생성해놓은 div를 obj인 body에 붙임
+            
+            newDIV.onclick=function deleteMe(){
+                var par =this.parentElement;  // 부모 HTML 태그요소
+                par.removeChild(this);        // 부모의 자식 즉 자신을 제거
+            };
+        }
+        function delDIV(){
+            alldiv = document.getElementsByTagName("div");
+            lastdiv = alldiv[alldiv.length -1];         //[]열의 값
+            obj = document.getElementById("parent");
+            obj.removeChild(lastdiv);
+        }
+        function deleteAll(){           // 전체 삭제
+            allDiv = document.getElementsByTagName("div");
+            obj = document.getElementById("parent");
+            // 1번째 for문. 마지막부터 처음까지 전체 삭제해야되니까 마지막값부터 시작해야됌.
+            for(var i = allDiv.length - 1; i >= 0; i--){
+                obj.removeChild(allDiv[i]);
+            }
+
+            // 2번째 while문 / 위와 마찬가지로 마지막부터 시작해서 처음까지 오면서 삭제
+            // var i = allDiv.length - 1;
+            // while(allDiv.length > 0){
+            //     obj.removeChild(allDiv[i]);
+            //     i--;
+            // }
+        }
+    </script>
+</head>
+<body id="parent">
+    <h3>DIV 객체를 동적으로 생성, 삽입, 삭제하는 예제</h3>
+    <hr>
+    <p>DOM 트리에 동적으로 객체를 삽입할 수 있습니다.
+        createElement, appendChild, removeChild 메서드를 이용하여 새로운 객체를 생성, 삽입, 삭제하는 예제입니다.
+    </p>
+    <a href="javascript:createDIV()">DIV 생성!</a>
+    <hr>
+    <a href="javascript:delDIV()">DIV 삭제!!</a>
+    <hr>
+    <a href="javascript:deleteAll()">전체 삭제</a>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>      <!-- 38일차(11일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제 점심메뉴 추천</title>
+    <style>
+        h3, h4 { display: inline;}
+    </style>
+    <script>
+        var menu = ['중국집', '돈가스', '맛고을', '버거킹', '3일소고기', '다이어트', '막걸리 파전'];
+		var classMate = ['강석진','구본학','김다나','방지환','안도훈','양원범','오민영','오승화','이규원',
+						'이동원','이옥득','이현우','임규옥','임찬빈','정준오','정현수','조성헌','한수진',
+						'현승환','홍석진'];
+		
+		// 팀 객체 
+        var objTeam = {};
+        // objTeam.key0 = '중국집 팀은 : ';
+        // objTeam.key1 = '돈까스 팀은 : ';
+        // objTeam.key2 = '맛고을 팀은 : ';
+        // objTeam.key3 = '버거킹 팀은 : ';
+        // objTeam.key4 = '3일소고기 팀은 : ';
+        // objTeam.key5 = '다이어트 팀은 : ';
+        // objTeam.key6 = '막걸리 파전 팀은 : ';
+        objTeam["중국집"] = ' 팀은 : ';
+        objTeam["돈까스"] = ' 팀은 : ';
+        objTeam["맛고을"] = ' 팀은 : ';
+        objTeam["버거킹"] = ' 팀은 : ';
+        objTeam["3일소고기"] = ' 팀은 : ';
+        objTeam["다이어트"] = ' 팀은 : ';
+        objTeam["막걸리 파전"] = ' 팀은 : ';
+    
+
+        
+		// 학생 메뉴 랜덤 할당(메뉴 인덱스로).
+		var listMate = [];
+        var mylist0 =[];
+        var mylist1 =[];
+        var mylist2 =[];
+        var mylist3 =[];
+        var mylist4 =[];
+        var mylist5 =[];
+        var mylist6 =[];
+        for(var i = 0; i < classMate.length; i++){
+            var a = Math.ceil(Math.random() * menu.length) - 1;
+            listMate[i] = a;
+            switch(a){
+                case 0: 
+                    if(mylist0.length < 4){
+                        mylist0.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 1: 
+                    if(mylist1.length < 4){
+                        mylist1.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 2: 
+                    if(mylist2.length < 4){
+                        mylist2.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 3: 
+                    if(mylist3.length < 4){
+                        mylist3.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 4: 
+                    if(mylist4.length < 4){
+                        mylist4.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 5: 
+                    if(mylist5.length < 4){
+                        mylist5.push(classMate[i]);
+                    }else{i--;}
+                    break;
+                case 6: 
+                    if(mylist6.length < 4){
+                        mylist6.push(classMate[i]);
+                    }else{i--;}
+                    break;
+            }
+        }
+        // objTeam.key0 += mylist0;
+        // objTeam.key1 += mylist1;
+        // objTeam.key2 += mylist2;
+        // objTeam.key3 += mylist3;
+        // objTeam.key4 += mylist4;
+        // objTeam.key5 += mylist5;
+        // objTeam.key6 += mylist6;        
+
+
+        objTeam["중국집"] += mylist0;
+        objTeam["돈까스"] += mylist1;
+        objTeam["맛고을"] += mylist2;
+        objTeam["버거킹"] += mylist3;
+        objTeam["3일소고기"] += mylist4;
+        objTeam["다이어트"] += mylist5;
+        objTeam["막걸리 파전"] += mylist6;
+        
+
+
+        document.write('<h3>오늘의 점심메뉴 팀 (코로나 4명 이하만)</h3> <hr>');
+
+        // 1번째 방법
+        var output = '';
+        for(var key in objTeam){
+            output += key + objTeam[key] + '<br>';
+        }
+        document.write(output);
+
+        document.write("<hr>");
+
+        // 2번째 방법
+        // document.write(objTeam.key0 + '<br>');
+        // document.write(objTeam.key1 + '<br>');
+        // document.write(objTeam.key2 + '<br>');
+        // document.write(objTeam.key3 + '<br>');
+        // document.write(objTeam.key4 + '<br>');
+        // document.write(objTeam.key5 + '<br>');
+        // document.write(objTeam.key6 + '<br>');
+        
+		document.write("<button onclick='location.reload();'>다시 추첨</button>");
+    </script>
+</head>
+<body>
+</body>
+</html>

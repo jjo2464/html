@@ -1,0 +1,52 @@
+<!DOCTYPE html>       <!-- 37일차(10일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 8-6 태그 이름으로 DOM 객체 찾기 getElementsByTagName</title>
+    <script>
+        var re = 0;
+        var chnageColor = 0;
+
+        function change(){
+            var spanArray = document.getElementsByTagName("span");
+
+            re += 1;
+            if(re % 2 == 0){
+                chnageColor = 0;
+            }else{
+                chnageColor = 1;
+            }
+            console.log(re);
+            if(chnageColor == 1){
+                for(var i = 0; i < spanArray.length; i++){
+                    var span123 = spanArray[i];
+                    if( i % 2 == 0){
+                        span123.style.color = "red";
+                        span123.style.fontSize = "30px";
+                    }else{
+                        span123.style.color = "blue";
+                        span123.style.fontSize = "50px";
+                    }
+                }
+            }else{
+                for(var i = 0; i < spanArray.length; i++){
+                    var span123 = spanArray[i];
+                    span123.style.color = "black";      //excolor;
+                    span123.style.fontSize = "15px";   //exfont;
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>내가 좋아하는 과일
+        <button onclick="change()">누르세요</button>
+    </h3>
+    <hr>
+    저는 빨간 <span>사과</span> 를 좋아해서 아침마다 한 개씩 먹고 있어요. 운동할 때는 중간 중간에
+    <span>바나나</span>를 먹지요. 탄수화물 섭취가 빨라 힘이 납니다. 또한 달콤한 향기를 품은 <span>체리</span>와
+    여름 냄새 물씬 나는 <span>자두</span>를 좋아합니다.
+</body>
+</html>

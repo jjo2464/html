@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 56일차(29일차) 부트스트랩 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <!-- 부트스트랩의 css 와 Separte 복사 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- 계속 사용하던 JQuery -->
+    <script>
+        var userData = null;            // 데이터를 담아놓을 공간
+        var currentPage = 0;                // 현재 페이지
+        var pages = "";
+        var page_size = 10;     // 한 페이지에 몇 개를 넣을지 결정해야되서 디폴트로 설정해놓음
+
+        function fn_search() {
+            $.ajax({
+                url: "https://api.upbit.com/v1/market/all"
+                , dataType: "json"
+                , success: function (data) {
+                    userData = data;
+                    pages = paginate(data, page_size);          // 10개씩 담겨있음
+                    pageLi = "";
+                    for (var i = 0; i < pages.length; i++) {      // 페이징의 숫자들 만드려고 하는 것
+                        index = 1 + i;
+                        pageLi += '<li onclick="pageChange(' + i + ')" id=page_'
+                            + i + ' class="page-item list-item"><a class="page-link href="javascript:void(0)">'             // a 태그의 css(눌렀을 때 색깔이 나오는 것)는 가져가지만 액션은 가져가지 않겠다는 뜻
+                            + index + "</a><li>";
+                    }
+                    $(".page-list").after(pageLi);
+                    page = pages[currentPage];
+                    printRow(page);
+
+                }, error(e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        function pageChange(page) {
+            currentPage = page;
+            $('.list-item').removeClass('active');
+            $('#page_' + page).addClass('active');
+            $(".page-data").html("");
+            pageD = pages[page];
+            printRow(pageD);
+        }
+
+        function paginate(arr, size) {
+            return arr.reduce(function (acc, val, i) {
+                var idx = Math.floor(i / size);
+                var page = acc[idx] || (acc[idx] = []);
+                page.push(val);
+                return acc;
+            }, []);
+            // [] 최초 호출에서 첫 번째 인수에 제공하는 값
+        }
+
+        function printRow(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                $(".page-data").append("<tr><td>" + (i + 1)
+                    + "</td><td>" + arr[i].market
+                    + "</td><td>" + arr[i].korean_name
+                    + "</td><td>" + arr[i].english_name + "</td></tr>"
+                );
+            }
+        }
+
+        function nextPage() {
+            if (pages.length - 1 > currentPage) {
+                page = currentPage + 1;
+            }
+            pageChange(page);
+        }
+
+        function prePage() {
+            if (currentPage < pages.length && currentPage != 0) {
+                page = currentPage - 1;
+            }
+            pageChange(page);
+        }
+
+        $(document).ready(function () {
+            $("#listSize").change(function () {
+                page_size = $("#listSize").val();
+                $(".page-data").html("");
+                $(".list-item").remove();
+                fn_search();
+            });
+        });
+    </script>
+
+</head>
+
+<body onload="fn_search();">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid justify-content-md-end">
+                    <div class="form-group row">
+                        <div class="w100">
+                            <select name="" id="listSize" class="form-control form-control-sm">
+                                <option value="10">10개</option>
+                                <option value="20">20개</option>
+                                <option value="50">50개</option>
+                                <option value="100">100개</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <colgroup>
+                    <col width="5%">
+                    <col width="35%">
+                    <col width="35%">
+                    <col width="25%">
+                </colgroup>
+                <thead>
+                    <th scope="col">No</th>
+                    <th scope="col">코드</th>
+                    <th scope="col">국문이름</th>
+                    <th scope="col">영문이름</th>
+                </thead>
+                <tbody class="page-data">
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li onclick="prePage();" class="page-item page-list">
+                        <a href="#" class="page-link">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                    <li onclick="nextPage();" class="page-item">
+                        <a href="#" class="page-link">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</body>
+
+</html>

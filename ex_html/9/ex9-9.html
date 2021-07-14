@@ -1,0 +1,62 @@
+<!DOCTYPE html>                <!-- 40일차(13일차) 9장 이벤트 기초 및 활용 --> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 9-14</title>
+    <script>
+        function changeImage(){
+            var sel = document.getElementById('sel');
+            var img = document.getElementById('myimg');
+            img.onload = function(){            // 이미지 크기 출력함.
+                var mySpan = document.getElementById('mySpan'); 
+                mySpan.innerHTML = img.width + " x " + img.height;      // body의 span 내용을 바꿔줌 크기로
+            }
+            var index = sel.selectedIndex; // 선택된 옵션 인덱스
+            img.src = sel.options[index].value; // 옵션의 value 속성으로 img을 변환시켜줌.
+        }
+        function changeImg2(e){
+            var img = document.getElementById('myimg');
+            var vivi = document.getElementById('vivi');
+            console.log(vivi);
+            switch(e.keyCode){         //위 방향키 38, 왼 = 37 우 = 39 아래 = 40
+                case 38 : img.src = "/ex_html/images/math_com_1.jpg"; break;
+                case 37 : img.src = "/ex_html/images/math_com_2.jpg"; break;
+                case 39 : img.src = "/ex_html/images/math_com_3.jpg"; img.style.right += 10; break;
+                case 40 : img.src = "/ex_html/images/j.JPG"; break;
+                case 13 : vivi.play(); break;
+            }
+        }
+    </script>
+    <style>
+        video{
+            z-index: -1;
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        body{
+            color: white;
+        }
+    </style>
+</head>
+<body onload="changeImage()" onkeydown="changeImg2(event)">
+    <h3>onload로 이미지 크기 출력</h3>
+    <hr>
+    <form action="">
+        <select name="" id="sel" onchange="changeImage()">
+            <option value="/ex_html/images/math_com_1.jpg">가위</option>
+            <option value="/ex_html/images/math_com_2.jpg" selected>바위</option>
+            <option value="/ex_html/images/math_com_3.jpg">보</option>
+            <option value="/ex_html/images/j.jpg">J</option>
+        </select>
+        <span id="mySpan">이미지 크기</span>
+    </form>
+    <p><img src="/ex_html/images/math_com_1.jpg" alt="" id="myimg"></p>
+    <video src="/ex_html/video/IU_Celebrity.webm" muted id="vivi" ></video>
+    
+</body>
+</html>

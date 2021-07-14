@@ -1,0 +1,46 @@
+<!DOCTYPE html>           <!-- 36일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호이스팅</title>
+</head>
+<body>
+    <script>
+        /* 
+        자바스크립트 호이스팅(Hoising)
+        hoist 끌어올리기
+        모든 변수 선언은 호이스트가 된다.
+
+        변수의 정의가 그 범위에 따라 서넝ㄴ과 할당으로 분리
+        즉, 변수가 함수 내에서 정의되었을 경우 선언이 함수의 최상위로
+        함수 바깥에서 정의되었을 경우 전역 컨텍스트의 최상위로 변경된다.
+
+        선언 / Declaration
+        */
+        function ex(){
+            console.log(x);     // undefined
+            var x = 100;
+            console.log(x);     // 100
+        }
+        ex();
+        // 다른 언어의 경우 변수 x를 선언하지 않았기 때문에 오류가 나지만
+        // 자바스크립트 에서는 undefined라 하고 넘어감.
+        // var x = 100 구문에서 var x를 호이스트함.
+
+        // 선언문은 항시 자바스크립트 엔진 구동시 가장 최우선으로 해석함.
+        // 할당 / Assignment 구문은 런타임 과정에서 이루어지기 때문에 호이스팅이 되지 않음.
+        // 함수는 자신이 위치한 코드에 상관없이 
+        // 함수 선언문 형태로 정의한 함수의 유효범위는 전체 코드의 맨 처음부터 시작.
+        ex2();      // 가능
+        function ex2(){             // 쉽게 말해 var와 같이 선언하는것은 실행 할 때 가장 먼저 올라감.
+            console.log("hi");
+        }
+        ex3();      // 오류가 남.
+        var ex3 = function(){
+            console.log("hi2");
+        }
+    </script>
+</body>
+</html>

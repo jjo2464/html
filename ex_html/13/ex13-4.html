@@ -1,0 +1,51 @@
+<!DOCTYPE html> <!-- 50일차(23일차) 13장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마커 생성하기</title>
+</head>
+
+<body>
+    <div id="map" style="width:100%;height:350px;"></div>
+
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5088b6d76bfc3e553f7dfec40ad2294"></script>     <!-- 냬 앱키 지정 -->
+    <script>
+        var lat;
+        var lon;
+        if(!navigator.geolocation){
+            alert('지원안함');
+        }else{
+            navigator.geolocation.getCurrentPosition(found);
+        }
+        function found(position){
+            lat = position.coords.latitude; //위도
+            lon = position.coords.longitude; //경도
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = {
+                    center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+            // 마커가 표시될 위치입니다 
+            var markerPosition = new kakao.maps.LatLng(lat, lon);
+    
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+    
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+        }
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+        
+    </script>
+</body>
+
+</html>

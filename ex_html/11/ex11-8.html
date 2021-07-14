@@ -1,0 +1,38 @@
+<!DOCTYPE html>   <!-- 45일차(18일차) 캔버스 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="400" height="200"></canvas>
+    <input type="text" id="intext"> <br>
+    <input type="button" value="스타일적용" onclick="buttonon()">
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        // console.log(tete.innerText);
+        // context.font = "50px arial";
+        // context.strokeStyle = "blue";
+        // context.lineWidth = 1;
+        // context.strokeText('ㅎㅇㅎㅇ', 30, 50);
+        
+        function buttonon() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            var tete = document.getElementById('intext');
+            context.font = "50px forte";
+            context.strokeStyle = "blue";
+            context.lineWidth = 1;
+            context.strokeText(tete.value, 30, 50);
+            tete.value = "";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>     <!-- 40일차(13일차) 9장 이벤트 기초 및 활용 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onload</title>
+    <script>
+        window.onload = function(){
+        alert(document.getElementById('id_div').innerText);
+        }
+    </script>
+</head>
+<body>
+    <h3>문서의 로딩완료, onload </h3>
+    <hr>
+    이 페이지가 출력되고 난 바로 직후 onload 리스너를 통해 경고창을 출력합니다.
+    <div id="id_div">내용</div>
+</body>
+</html>

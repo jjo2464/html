@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+
+<body>
+    <script>
+        function fn_login() {
+            var id = document.getElementById("id");
+            var pw = document.getElementById("pw");
+            var sign = document.getElementById('sign');
+            if (!window.localStorage) {
+                alert("지원안함");
+                return;
+            }
+            var val = localStorage.getItem(id.value);
+            if (val == null) {
+                alert(id.value + ' 회원 정보가 없음');
+                sign.focus();
+            } else {
+                if (pw.value == val) {
+                    location.href = 'https://www.naver.com';
+                } else {
+                    alert("비밀번호가 다릅니다.");
+                    pw.focus();
+                }
+            }
+        }
+    </script>
+    <h3>로그인</h3>
+    <hr>
+    id : <input type="text" size="10" id="id">
+    pw : <input type="password" size="10" id="pw">
+    <button id="" onclick="fn_login();">접속</button>
+    <button id="sign" type="button" onclick="window.open('ex12-8회원가입.html', '_blank, left=300, top=300, width=500, height=300')">회원가입하러 가기</button>
+</body>
+
+</html>

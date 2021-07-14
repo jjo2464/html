@@ -1,0 +1,64 @@
+<!DOCTYPE html>          <!-- 43일차(16일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            cursor: none;
+        }
+        #div_parent{
+            width: 50px;
+            height: 50px;
+            
+        }
+        /* transition 요소의 변화를 일정 기간(duration) 동안 일어나게 함 
+        자동으로 발동되지 않음. (hover click 과 같은 이벤트에 의해 동작) */
+        /* animation 시작, 정지, 반복까지 제어가 가능함. 하나 또는 복수의 @keyframe으로 이루어짐 */
+        #cursor_item{
+            animation: boxleaner 4s linear infinite;
+            
+        }
+        /* key@frame 이름 및 정의 */
+        @keyframes boxleaner{
+            0%{
+                transform: rotate(0deg);
+            }
+            /* 25%{
+                transform: rotate(90deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            75%{
+                transform: rotate(270deg);
+            } */
+            100%{
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+    <script>
+        var h1;
+        var x, y;
+        var cursor;
+        var mouseFunc = function(e){
+            x = e.clientX;
+            y = e.clientY;
+            
+            cursor.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+            }
+        window.onload = function(){
+            cursor = document.getElementById("div_parent");
+            document.addEventListener('mousemove', mouseFunc);
+        }
+    </script>
+</head>
+<body>
+    <div id="div_parent">
+        <img src="/ex_html/images/earth.png" width="50px" alt="" id="cursor_item">
+    </div>
+</body>
+</html>

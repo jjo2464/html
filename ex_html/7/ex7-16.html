@@ -1,0 +1,41 @@
+<!DOCTYPE html>      <!-- 37일차(10일차) 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 7-10</title>
+    <script>
+        var account = {
+            // 프로퍼티 생성 및 초기화
+            owner : "황기태",       // 계좌 주인
+            code : "111",           // 계좌코드
+            balnce : 35000,         //잔액 프로퍼티
+
+            // 메서드 작성
+            inquiry : function(){return this.balnce;},      // 잔금 조회
+            deposit : function(money){this.balnce += money;},       // 저금
+            withdraw : function(money){     // 예금 인출, 출금액이 계좌잔금보다 적다고 가정함.
+                this.balnce -= money;
+                return money;
+            }
+        };
+    </script>
+</head>
+<body>
+    <h3>리터럴 표기법으로 사용자 객체 만들기</h3>
+    <hr>
+    <script>
+        document.write("account : " );
+        document.write(account.owner + ",  ");
+        document.write(account.code + ",  ");
+        document.write(account.balnce + "<br>");
+
+        account.deposit(10000);
+        document.write("10000원 저금 후 잔액은 " + account.inquiry() + "<br>");
+        account.withdraw(5000);
+        document.write("5000원 인출 후 잔액은 " + account.inquiry() + "<br>");
+    </script>
+    
+</body>
+</html>

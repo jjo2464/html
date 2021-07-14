@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>                // chartjs.org 에서 확인가능
+        $(document).ready(function () {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var data = {
+                type: 'doughnut'
+                , data: {
+                    labels: ['jan', 'feb', 'mar', 'apr', 'may', 'june', 'july']
+                    , datasets: [{
+                        label: 'title'
+                        , backgroundColor:[ 'rgb(225,99,132)','rgb(111,99,132)','rgb(0,99,132)','rgb(225,99,132)','rgb(225,99,132)']
+                        , file: false
+                        , borderColor: 'rgb(255,99,132)'
+                        , lineTension: 0.1
+                        , data: [0, 5, 2, 20, 30, 45, 10]
+                    }]
+                },
+                Options: {}
+            }
+            var chart = new Chart(ctx, data);
+
+            $("button").click(function () {
+                data = [10, 50, 60, 70, 20, 60, 10];
+                chart.data.datasets[0].data = data;
+                chart.update();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div style="width: 500px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <button>버튼</button>
+</body>
+
+</html>

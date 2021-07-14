@@ -1,0 +1,70 @@
+<!DOCTYPE html>          <!-- 47일차(20일차) 12장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션 스토리지</title>
+</head>
+
+<body>
+    <!-- 세션 스토리지는 동일한 윈도우에서만 저장, 공유가 가능하고
+    새로운 윈도우로 가면 공유가 안됌. -->
+    <h3>세션 스토리지에 저장/검색 </h3>
+    품목명 : <input type="text" id="item">
+    개수 : <input type="text" id="count">
+    <button id="save" onclick="store();">저장</button>
+    <button id="retrieve" onclick="retrieve();">검색</button>          <!-- retrieve = 검색하다 -->
+    <button id="delete" onclick="f_delete();">삭제</button>
+    <div id="div_1" style="border: 2px solid black;"></div>
+    <script>
+        function store() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            if (!window.sessionStorage) {
+                alert("세션스토리지를 지원하지 않음!");
+                return;
+            }
+            sessionStorage.setItem(item.value, count.value);
+            f_print();
+        }
+        function f_print() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            var str = "";
+            for (a in sessionStorage) {
+                str += 'key = ' + a + '/ value = ' + sessionStorage[a] + "<br>";
+            }
+            var div_1 = document.getElementById("div_1");
+            div_1.innerHTML = str;
+        }
+
+        function retrieve() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            if (!window.sessionStorage) {
+                alert("세션 스토리지를 지원하지 않음!");
+                return
+            }
+            if (sessionStorage.length > 0) {
+                f_print();
+                alert('해당 아이템 ' + item.value + '의 값 = ' + sessionStorage.getItem(item.value));
+            } else {
+                var div_1 = document.getElementById("div_1");
+                div_1.innerHTML = '저장 데이터가 없습니다.';
+            }
+        }
+
+        function f_delete(){
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            var div_1 = document.getElementById("div_1");
+            div_1.innerHTML = '해당 아이템 ' + item.value + '의 ' + sessionStorage.getItem(item.value) + '이 삭제되었습니다.';
+            sessionStorage.removeItem(item.value);
+            alert(item.value + "가 삭제되었습니다.");
+        }
+    </script>
+</body>
+
+</html>

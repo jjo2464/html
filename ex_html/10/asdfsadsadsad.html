@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- 계속 사용하던 JQuery -->
+    <style>
+        body {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        div {
+            min-width: 150%;
+        }
+
+        div div {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        // $(document).ready(function () {
+        //     $("#main").on("mousewheel", function (e, delta) {
+        //         var body = document.getElementsByTagName("body");
+        //         if(e > 0){
+        //             body.scrollBy(20, 0);
+        //         }else if ( e < 0){
+        //             body.scrollBy(-20, 0);
+        //         }
+        //         // body.scrollLeft -= (delta);
+        //         // $("#main").scrollLeft -= delta;
+        //         // $("body").scrollBy(20, 0); 
+        //         // body.scrollBy(20, 0);
+        //         console.log(e);
+        //         e.preventDefault();
+        //     });
+
+        // });
+
+        // $(document).ready(function () {
+        //     $("body").on('mousewheel', function (e) {
+
+        //         var wheelDelta = e.originalEvent.wheelDelta;
+
+        //         if (wheelDelta > 0) {
+
+        //             console.log("up");
+
+        //             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+
+        //         } else {
+
+        //             console.log("down");
+
+        //             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+
+        //         }
+
+        //     });
+        // });
+
+        // function moving(e) {
+        //     var body = document.getElementsByTagName("body");
+        //     var div = document.getElementById("main");
+        //     console.log(e.deltaY);
+        //     if (e.deltaY > 0) {
+        //         div.scrollLeft -= 20;
+        //     } else if (e.deltaY < 0) {
+        //         div.scrollLeft -= -20;
+        //     }
+        // }
+
+        $.fn.hasScrollBar = function () {
+            return (this.prop("scrollWidth") == 0 && this.prop("clientWidth") == 0)
+                || (this.prop("scrollWidth") > this.prop("clientWidth"));
+        }; // 좌우 스크롤이 있는지 없는지 여부 검사
+        function wheel(name) {
+            $(name).on('mousewheel', function (e) {
+                var hasScroll = $(this).hasScrollBar();
+                if (!hasScroll) { //스크롤이 없으면 그냥 일반 스크롤
+                } else { //있으면 아래 스크롤 받는값을 없애고 좌우스크롤
+                    e.preventDefault();
+                    var wheelDelta = e.originalEvent.wheelDelta;
+                    if (wheelDelta > 0) {
+                        $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+                    } else {
+                        $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+                    }
+                }
+            });
+        }
+        $(function () {
+            wheel('#scroll');
+        });
+
+    </script>
+</head>
+<!-- onmousewheel="event.preventDefault();" -->
+<!-- onmousewheel="moving(event);" -->
+
+<body>
+    <div id="scroll">
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+        <div>발자취가 있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss발자취가
+            있다면sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</div>
+    </div>
+</body>
+
+</html>

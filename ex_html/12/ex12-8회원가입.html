@@ -1,0 +1,47 @@
+<!DOCTYPE html>                  <!-- 47일차(20일차) 12장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+
+<body>
+    <h3>회원가입</h3>
+    <hr>
+    id : <input type="text" name="" id="id" size="10">
+    pw : <input type="password" name="" id="pw" size="10">
+    <button id="save" onclick="fn_save();">가입</button>
+    <button id="retrieve" onclick="fn_retrieve();">조회</button>
+    <button id="login" onclick="window.open('ex12-8로그인.html', '_blank, left=300, top=300, width=500, height=300')">로그인화면으로 돌아가기</button>
+    <script>
+        var id = document.getElementById("id");
+        var pw = document.getElementById("pw");
+        function fn_save(){
+            if(!window.localStorage){
+                alert("지원하지 않음");
+                return
+            }
+            localStorage.setItem(id.value, pw.value);
+            alert(id.value + '님 가입이 완료되셨습니다.');
+        }
+        function fn_retrieve(){
+            if(!window.localStorage){
+                alert("지원하지 않음");
+                return
+            }
+            var val = localStorage.getItem(id.value);
+            alert(id.value);
+            if(val == null){
+                alert(id.value + "는 회원내역에 없음");
+            }else{
+                pw.value = val;
+                alert(id.value + '는 이미 존재하는 회원입니다.');
+            }
+        }
+    </script>
+</body>
+
+</html>

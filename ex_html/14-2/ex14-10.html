@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("#target").on('blur', function(){         // 
+                $(this).val( $(this).val().replace(/[^0-9\.]/g, ''));
+            });
+            $("#target2").on('blur', function(){
+                $(this).val( $(this).val().replace(/[^가-힣]/g, ''));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    소수점 한자리까지만 허용 : <input type="text" id="target" value="">
+    한글만 허용 : <input type="text" id="target2" value="">
+</body>
+
+</html>

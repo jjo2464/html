@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function readFile(){
+            if(!window.File || !window.FileReader){
+                alert("File API 가 지원되지 않습니다.");
+                return;
+            }
+            var  files = document.getElementById("input_id").files;
+            if(!files.length){
+                alert("파일을 선택하시오!");
+                return;
+            }
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onload = function(){
+                document.getElementById("result").value = reader.result;
+            }
+            reader.readAsText(file, 'utf-8');
+        }
+    </script>
+</head>
+<body>
+    <input type="file" name="input_name" id="input_id">
+    <button id="readFile" onclick="readFile();">파일 가져오기</button>
+    <textarea name="" id="result" cols="60" rows="10"></textarea>
+</body>
+</html>

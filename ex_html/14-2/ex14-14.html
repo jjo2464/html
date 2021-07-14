@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    </style>
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("#bt1").click(function () {
+                $("p").append("<b style='color:red' id='bb'>Hello!</b>");
+            });
+
+            $("#bt2").click(function () {
+                $("p").prepend("<b style='color:red' id='bb'>Hello!</b>");
+            });
+
+            $("#bt3").click(function () {
+                $("b").remove();
+            });
+
+            $(document).on("click", "b", function () {        // 도큐먼트에서 b를 클릭했을 때의 함수출력
+                $(this).remove();
+            });
+
+            // $('b').click(function () {       // 이렇게 새로 생긴 b에 대한 이벤트를 밖에서 입력하면 인식이 안됌. 위처럼 도큐먼트를 또 써줘야 다시 페이지를 읽는다는 뜻이라 저렇게 하지않으면 인식을 못함.
+            //     $(this).remove();
+            // });
+        });
+    </script>
+</head>
+
+<body>
+    <p>i would like to say : </p>
+    <button id="bt1">append()</button>
+    <button id="bt2">prepend()</button>
+    <button id="bt3">remove()</button>
+</body>
+
+</html>

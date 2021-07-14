@@ -1,0 +1,29 @@
+<!DOCTYPE html>      <!-- 45일차(18일차) 캔버스 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="250" height="150"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        context.beginPath();
+        context.strokeStyle = 'blue'
+        context.rect(30, 30, 70, 70);   // 앞의 30 30 이 시작점 xy이고 뒤의 70, 70은 크기
+        context.stroke();   // 외곽선 그리기
+
+        context.beginPath();
+        context.fillStyle = 'violet';   // 선색
+        context.rect(60, 60, 50, 50);
+        context.fill();     // 내부만 채워서 그림
+
+        context.font = '20px';
+        context.fillStyle = 'green';
+        context.fillText('Text in Canvas', 50, 50);
+    </script>
+</body>
+</html>

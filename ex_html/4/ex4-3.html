@@ -1,0 +1,46 @@
+<!DOCTYPE html>     <!-- 32일차, 4장 CSS -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 예제 4-9</title>
+    <style>
+        h3, li{/* 태그 이름 셀렉터 */
+        color: brown;}
+        div > div > strong { /* 자식 셀렉터 */
+        background: yellow;}
+        ul strong { /* 자손 셀렉터 */
+        color: dodgerblue;}
+        .waring { /* class 셀렉터 */
+        color: red;}
+        body.main { /* class 셀렉터 */              /* body 전체를 특정 지어 하고 싶을 때 */
+        background: hotpink;}
+        #list { /* id 셀렉터 */
+        background: mistyrose;}
+        #list span { /* 자손 셀렉터 */
+        color: forestgreen;}
+        h3:first-letter { /* 가상 클래스 셀렉터 */
+        color: red;}
+        li:hover { /* 가상 클래스 셀렉터 */
+        background: yellowgreen;}
+
+        /* 여기서부턴 내용 추가. */
+        h3:hover{color: red;}
+        #gg3 {background: purple;}
+    </style>
+</head>
+<body class="main">
+    <h3>Web Programming</h3>            <!-- div 는 블럭요소, span은 인라인요소, p는 블럭요소-->
+    <hr>                        <!-- p 태그는 문자 단락용, div 태그는 레이아웃 계층을 나누는 용이다. -->
+    <div>               <!-- 그래서 div는 p를 포함할 수 있지만 그 반대는 되지 않음. -->
+        <div> <span id="gg3">2학기</span> <strong>학습 내용</strong> 입니다.</div>
+        <ul id="list">
+            <li><span>HTML5</span></li>
+            <li><strong>CSS</strong></li>           <!-- 위의 style에서 ul strong은 자손셀렉터이므로 ul의 li의 strong이라서 자손 셀렉터에 해당함. -->
+            <li>JAVASCRIPT</li>
+        </ul>
+        <div class="waring">60점 이하는 F</div>
+    </div>
+</body>
+</html>

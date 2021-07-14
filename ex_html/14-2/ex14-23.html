@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('li:nth-child(3n)').css("background-color", 'yellow');        // 3의 배수마다 선택
+            $('li:nth-last-of-type(2)').css("background-color", 'red');     // 마지막에서 2번째
+        });
+    </script>
+</head>
+
+<body>
+    <h1>탐색 선택자</h1>
+    <ul style="list-style: square;">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+        <li>내용6</li>
+        <li>내용7</li>
+        <li>내용8</li>
+    </ul>
+    <ul>
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+        <li>내용6</li>
+        <li>내용7</li>
+        <li>내용8</li>
+    </ul>
+</body>
+
+</html>

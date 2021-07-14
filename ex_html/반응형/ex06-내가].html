@@ -1,0 +1,108 @@
+<!DOCTYPE html> <!-- 44일차(17일차)  반응형.ppt -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(/ex_html/images/space2.jpg);
+            background-size: 800px 800x;
+        }
+        #space {
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+        }
+
+        #earth {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            animation: ball 5s linear infinite;
+        }
+
+        #moon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: ball 3s linear infinite;
+        }
+
+        #sun {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            /* left: 45%; */
+            /* top: 50%; */
+            animation: ball 10s linear infinite;
+        }
+
+        @keyframes ball {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(90deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(270deg);
+            }
+
+            100% {
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img src="/ex_html/images/space2.jpg" alt="" id="space"> -->
+    <img src="/ex_html/images/moon.png" alt="" id="moon">
+    <img src="/ex_html/images/earth.png" alt="" id="earth">
+    <img src="/ex_html/images/sun.png" alt="" id="sun">
+</body>
+<script>
+    var moon = document.getElementById('moon');
+    var sun = document.getElementById('sun');
+    var earth = document.getElementById('earth');
+
+    window.onload = function () {
+        centerX = window.innerWidth / 2;
+        centerY = window.innerHeight / 2;
+        sun.style.left = centerX + 'px';
+        sun.style.top = centerY + 'px';
+    }
+
+    earthAngle = 0;
+    moonAngle = 0;
+/* parseInt(sun.style.left)    parseInt(sun.style.top) */
+    //setInterval을 사용해서 일정간격으로 공전하게 
+    setInterval(function () {
+
+        var earthLeft = parseInt(sun.style.left) + 400 * Math.cos(earthAngle);
+        var earthTop = parseInt(sun.style.top) +  400 * Math.sin(earthAngle);
+        var moonLeft = earthLeft + 200 * Math.cos(moonAngle);
+        var moonTop = earthTop + 200 * Math.sin(moonAngle);
+
+        //위치 이동하게끔
+        earth.style.left = earthLeft + "px";
+        earth.style.top = earthTop + "px";
+        moon.style.left = moonLeft + "px";
+        moon.style.top = moonTop + "px";
+
+        //각도 변경
+        earthAngle += 0.1;
+        moonAngle += 0.3;
+    }, 50);
+</script>
+
+</html>

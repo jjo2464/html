@@ -1,0 +1,23 @@
+<!DOCTYPE html>      <!-- 36일차(9일차) 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중첩 함수</title>
+</head>
+<body>
+    <script>
+        // 중첩 함수
+        function circle(radius){
+            var pi = 3.14;
+            function area(r){           // 내부 함수는 외부 함수 안에서만 사용이 가능함. 외부 함수를 사용하기 전까진 있는지도 모름.
+                return r * r * pi;
+            }
+            return area(radius);
+        }
+        document.write('circle(5) = ' + circle(5) + "</br>");
+        document.write("</br>");
+    </script>
+</body>
+</html>

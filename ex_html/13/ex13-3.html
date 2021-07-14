@@ -1,0 +1,42 @@
+<!DOCTYPE html>              <!-- 50일차(23일차) 13장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>넥스트 아이티 교육센터 </h1>
+    </div>
+    <iframe src="" id="map" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+    <script>
+        if(!navigator.geolocation){
+            alert('지원안함');
+        }else{
+            navigator.geolocation.getCurrentPosition(found);
+        }
+        function found(position){
+            var lat = position.coords.latitude; //위도
+            var lon = position.coords.longitude; //경도
+            var container = document.getElementById('map');
+            container.src = 'https://map.kakao.com/link/to/넥스트아이티/,' + lat + ',' + lon + '';
+        }
+    </script>
+</body>
+
+</html>

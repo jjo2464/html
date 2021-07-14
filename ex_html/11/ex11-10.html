@@ -1,0 +1,63 @@
+<!DOCTYPE html>      <!-- 46일차(19일차) 캔버스 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스로 그림그리기</title>
+</head>
+<body onload="init();">
+    <h2>마우스를 누른 채로 드래깅하여 그림을 그리기</h2>
+    <canvas id="myCanvas" width="400" height="300" style="background-color: aliceblue;"></canvas>
+    <script>
+        var canvas, context;
+        function init(){
+            canvas = document.getElementById("myCanvas");
+            context = canvas.getContext('2d');
+
+            context.lineWidth = 2;                // 선의 굵기
+            context.strokeStyle = "black";
+
+            canvas.addEventListener('mousemove', function(e){ move(e)}, false);     // onload 해서 init을 한번만 호출하는데, 이벤트 리스너를 통해 해당 이벤트들이 발생할때마다 이벤트 관련 함수를 키는것.
+            canvas.addEventListener('mousedown', function(e){ down(e)}, false);
+            canvas.addEventListener('mouseup', function(e){ up(e)}, false);
+            canvas.addEventListener('mouseout', function(e){ out(e)}, false);
+        }
+        var startX = 0, stratY = 0; //드래깅하는 동안 처음 마우스가 눌러진 좌표
+        var dragging = false;       // 누르고 드래깅하는 동안에만 true 로 바꿀 것
+
+        function draw(curX, curY){
+            context.beginPath();
+            context.moveTo(startX, stratY);
+            context.lineTo(curX, curY);
+            context.stroke();
+        }
+
+        function down(e){
+            startX = e.offsetX; 
+            stratY = e.offsetY;     // offset은 해당 객체에서의 마우스 좌표
+            dragging = true;
+            console.log(startX + ' 그리고 ' + stratY);
+        }
+
+        function up(e){
+            dragging = false;
+        }
+
+        function move(e){
+            if(!dragging){      // 눌러진게 아니라면( down에 dragging 을 트루로 했으니까) 리턴하라
+                return;
+            }
+            var curX = e.offsetX;
+            var curY = e.offsetY;
+            draw(curX, curY);
+            startX = curX;
+            stratY = curY;
+        }
+
+        function out(e){
+            dragging = false;
+        }
+    </script>
+</body>
+</html>

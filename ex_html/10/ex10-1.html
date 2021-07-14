@@ -1,0 +1,39 @@
+<!DOCTYPE html> <!-- 40일차(13일차) 10장 윈도우와 브라우저 관련 객체 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 10-1</title>
+    <script>
+        var newWin = null;      // 새 윈도우가 이미 켰는지 안켰는지 확인
+        function load11(URL) {
+            newWin = window.open(URL, "이름이 같으면 다른 홈페이지를 클릭해도 여러창으로 뜨지않고 하나의 창에서 변경됌.", "left=800,top=300,width=800,height=800");     // 이름을 동일하게 해서 하나의 창에서 페이지가 계속 바뀜
+        }
+        function closeNewWinodw(){
+            if(newWin == null || newWin.closed){     // 새 창이 없거나 닫혀있는 경우
+                return;     // 그냥 빠지기
+            }else{
+                newWin.close();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>window.open()으로 윈도우 열기</h3>
+    <hr>
+    <a href="javascript:load11('/ex_html/9/ex9-9.html')">
+        내가 한 ex9-9</a><br>
+    <a href="javascript:load11('http://www.universalorlando.com')">
+        유니버설 올랜드 홈 페이지</a><br>
+    <a href="javascript:load11('http://www.disneyworld.com')">
+        <!-- load11 라는 함수를 불러오는 것. -->
+        디즈니월드 홈 페이지
+    </a><br>
+    <a href="javascript:window.close()">현재 윈도우 닫기</a> <br> <!-- 이건 window 객체의 고유 함수 close를 가져온것. -->
+    <a href="javascript:closeNewWinodw()">새 창 닫기</a>
+</body>
+
+</html>

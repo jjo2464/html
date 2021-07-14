@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>로그인</title>
+  <link rel="stylesheet" href="/project/register.css">
+  <script>
+    function SetCookie(name, value, expire) {
+      var cookieStr = name + "=" + value +
+      ((expire == null)?"":(";expiers=" + expire.toGMTString()));  
+      document.cookie = cookieStr;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h3>로그인</h3>
+    <form>
+      <div id="login_input">
+        <input id="id" type="text" autofocus placeholder="아이디">
+        <input id="pw" type="password" placeholder="비밀번호">
+      </div>
+      <div id="login_bttn">
+        <span>
+          <button type="button" id="id_login" onclick="log_in();">로그인</button>
+          <button type="button" id="id_sign"
+            onclick="window.open('register.html', '_blank, left=300, top=300, width=500, height=300')">회원가입</button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <script>
+    function log_in() {
+      var id = document.getElementById('id');
+      var pass = document.getElementById('pw');
+
+      var val = localStorage.getItem(id.value);
+      if (val == null) {
+        alert(id.value + "는 회원내역에 없음");
+      } else if (val != pass.value) {
+        alert('비밀번호가 틀렸습니다. 다시 입력해 주세요.');
+        pass.focus();
+      } else {
+        var expire = new Date();
+        expire.setTime(expire.getTime() + (6660000));
+        SetCookie("username", id.value, expire);
+        opener.location.reload();
+        window.close();
+      }
+
+
+
+
+
+    }
+  </script>
+</body>
+
+</html>

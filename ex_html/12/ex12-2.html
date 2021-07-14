@@ -1,0 +1,69 @@
+<!DOCTYPE html> <!-- 47일차(20일차) 12장 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬 스토리지</title>
+</head>
+
+<body>
+    <!-- 로컬 스토리지는 모든 윈도우에서 공유함. 새창을 띄우거나 새로고침해도 값이 저장되어있음. -->
+    <h3>로컬 스토리지에 저장/검색 </h3>
+    품목명 : <input type="text" id="item">
+    개수 : <input type="text" id="count">
+    <button id="save" onclick="store();">저장</button>
+    <button id="retrieve" onclick="retrieve();">검색</button>          <!-- retrieve = 검색하다 -->
+    <button id="delete" onclick="f_delete();">삭제</button>
+    <div id="div_1" style="border: 2px solid black;"></div>
+    <script>
+        function store() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            if (!window.localStorage) {
+                alert("로컬스토리지를 지원하지 않음!");
+                return;
+            }
+            localStorage.setItem(item.value, count.value);
+            f_print();
+        }
+        function f_print() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            var str = "";
+            for (a in localStorage) {               // forEach 문
+                str += 'key = ' + a + '/ value = ' + localStorage[a] + "<br>";
+            }
+            var div_1 = document.getElementById("div_1");
+            div_1.innerHTML = str;
+        }
+
+        function retrieve() {
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            if (!window.localStorage) {
+                alert("로컬 스토리지를 지원하지 않음!");
+                return
+            }
+            if (localStorage.length > 0) {
+                f_print();
+                alert('해당 아이템 ' + item.value + '의 값 = ' + localStorage.getItem(item.value));
+            } else {
+                var div_1 = document.getElementById("div_1");
+                div_1.innerHTML = '저장 데이터가 없습니다.';
+            }
+        }
+
+        function f_delete(){
+            var item = document.getElementById("item");
+            var count = document.getElementById("count");
+            var div_1 = document.getElementById("div_1");
+            div_1.innerHTML = '해당 아이템 ' + item.value + '의 ' + localStorage.getItem(item.value) + '이 삭제되었습니다.';
+            localStorage.removeItem(item.value);
+            alert(item.value + "가 삭제되었습니다.");
+        }
+    </script>
+</body>
+
+</html>

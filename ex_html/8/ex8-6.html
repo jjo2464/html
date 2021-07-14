@@ -1,0 +1,68 @@
+<!DOCTYPE html>      <!-- 37일차(10일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제 테이블 만들기</title>
+    <script>
+        var newTable = document.createElement("table");
+        newTable.setAttribute("border", "1");
+        newTable.setAttribute("id", "ta");
+        
+        function getText(){
+            var obj = document.getElementById('parent');
+            var trss = document.getElementById('trs').value; // 입력하는 값.
+            var tds = document.getElementById('tds').value;
+            
+                if(lastTd == trss){         // 그전에 입력한 값과 같은지
+                    newTd2 = document.createElement("td");
+                    newTd2.innerHTML=tds;
+                    newTr.appendChild(newTd2);
+                    newTable.appendChild(newTr);
+                    obj.appendChild(newTable);
+                }else{
+                    var newTr = document.createElement("tr");
+                    var newTd1 = document.createElement("td");
+                    newTd1.innerHTML = trss;
+                    newTd1.setAttribute('id', 'aa');
+                    var newTd2 = document.createElement("td");
+                    newTd2.innerHTML=tds;
+
+
+                    newTr.appendChild(newTd1);
+                    newTr.appendChild(newTd2);
+                    newTable.appendChild(newTr);
+
+                    obj.appendChild(newTable);
+                    var lastTr = document.getElementsByName('tr');
+                    lastTr = lastTr[lastTr.length - 1];
+                    var lastTd = lastTr.getElementsByTagName('td')[0].innerHTML;
+                    // var lastTd = lastTr[lastTr.length - 1].getElementsByTagName('td')[0].innerHTML;
+                    console.log(lastTd == trss);
+                }
+        }
+    </script>
+</head>
+<body id="parent">
+    <h3>태그가 삽입</h3>
+    <h2>테이블 생성</h2>
+    <hr>
+
+    <input type="text" value="" id="trs">
+    <input type="text" value="" id="tds">
+    <input type="button" value="누르세요." onclick="getText()">
+    <!-- <table border="1">
+        <tr>
+            <td>asd</td>
+            <td>asd</td>
+            <td>ddd</td>
+        </tr>
+        <tr>
+            <td>aaa</td>
+            <td>nnn</td>
+            <td>ccc</td>
+        </tr>
+    </table> -->
+</body>
+</html>

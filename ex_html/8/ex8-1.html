@@ -1,0 +1,38 @@
+<!DOCTYPE html>           <!-- 37일차(10일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 8-1</title>
+</head>
+<body>
+    <h3>DOM 객체 p의 프로퍼티, 스타일, 이벤트 리스너</h3>
+    <hr>                                            <!-- this란 p자체를 뜻함. -->
+    <p id="firstP" style="color: blue; background: yellow;"onclick="fn_color(this);">       
+    이것은 <span style="color: red;">문장입니다.</span>
+    </p>
+    <script>
+        // 프로퍼티, 스타일, 이벤트리스너에 접근이 가능함.
+        var p = document.getElementById("firstP");
+        var text = "p.id = " + p.id + "\n";
+        text += "p.tagName = " + p.tagName + "\n";
+        text += "p.innerHTML = " + p.innerHTML + "\n";
+        text += "p.style.color = " + p.style.color + "\n";
+        text += "p.onclick = " + p.onclick + "\n";
+        text += "p.childElementCount = " + p.childElementCount + "\n";
+        text += "너비 = " + p.offsetWidth + "\n";
+        text += "높이 = " + p.offsetHeight + "\n";
+        alert(text);
+
+        function fn_color(obj){
+            var color = obj.style.color;
+            if(color != "red"){
+                obj.style.color = "red";
+            }else{
+                obj.style.color = "blue";
+            }
+        }
+    </script>
+</body>
+</html>

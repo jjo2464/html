@@ -1,0 +1,49 @@
+<!DOCTYPE html>     <!-- 35일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습 문제</title>
+</head>
+<body>
+    <script>
+        function wstars(a){
+            while(a > 0){
+                document.writeln('☆');
+                a--;                
+            }
+        }
+        function bstars(a){
+            while(a > 0){
+                document.writeln('★');
+                a--;                
+            }
+        }
+        var s_num = [[7, 7, 6, 6, 5,  0, 3, 4, 4], [4, 1, 4], [3, 3, 3], [3, 5, 3], [1, 11, 1]];
+        var f_num = [[1, 1, 3, 3, 5, 15, 9, 7, 7], [3, 3]   , [3, 3]   , [2, 2]   , [1, 1]   ];
+        /* 2차원 배열의 j 부분이 1일때까지만 한숫자당 한 층인데, 그다음부턴 j마다 한층씩 */
+        for(var i = 0; i < s_num.length; i++){      
+            if(s_num[i] == s_num[0]){           // 0번째만 길이가 같으니까 s_num[i] == f_num[i] 라고 해도됌.
+                for(var j = 0; j < s_num[i].length; j++){
+                wstars(s_num[i][j]);
+                bstars(f_num[i][j]);        /* 2차원 배열의 0번째는 갯수가 같음 */
+                wstars(s_num[i][j]);
+                document.writeln("<br>");
+                }
+             }else{
+                 for(var k = 0; k < s_num[i].length; k++){
+                     if(s_num[i].length == 2){
+                         wstars(s_num[i][2]);
+                         continue;
+                     }
+                     wstars(s_num[i][k]);
+                     bstars(f_num[i][k]);
+                    }
+                    document.writeln("<br>");
+                }
+             }
+       
+    </script>
+</body>
+</html>

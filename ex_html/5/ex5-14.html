@@ -1,0 +1,44 @@
+<!DOCTYPE html>             <!-- 43일차(16일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 600px;
+            margin: 600px;
+            animation: rotate 1.5s 3;
+                /* background 1.5s infinite alternate;     이렇게 한번에 여러개 선언하고 속성 지정까지 가능함. */
+        }
+        @keyframes rotate{
+            /* perspective : 크기 
+            3차원 변형에서 사용하는 속서응로 원래 위치에서 사용자가 있는 방향 or
+            반대 방향으로 잡아당기거나 밀어내는 원근감을 갖게 함 
+            rotateX, rotateY 3차원 변형각도*/
+            from { transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+                background-image: url(/ex_html/images/abc01.JPG);}
+            50% { transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+                background-image: url(/ex_html/images/abc02.JPG);}
+            to { transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+                background-image: url(/ex_html/images/abc03.JPG);}
+        }
+        /* @keyframes background{
+            from { background-image: url(/ex_html/images/abc01.JPG);}
+            50% { background-image: url(/ex_html/images/abc02.JPG);}
+            to { background-image: url(/ex_html/images/abc03.JPG);}
+        } */
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <img src="/ex_html/images/abc01.JPG" alt="">
+
+    <script>
+        var div = document.getElementsByClassName("box");
+        div.
+    </script>
+</body>
+</html>

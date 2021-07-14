@@ -1,0 +1,25 @@
+<!DOCTYPE html>      <!-- 47일차(20일차) 12장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try-catch</title>
+</head>
+<body>
+    <script>
+        var msg = "";
+        function test(){
+            try {
+                aleasrt('hello')        //일부로 오류가 나게 철자 잘못침.
+            } catch (e) {
+                msg = "다음과 같은 오류가 발생함!!  " + e.message;
+                alert(msg);
+            }finally{           // try 구문에서 오류가 나지않아도 finally는 무조건 탐. 오류가 나면 catch 구문 후 finally 실행
+                document.write("문제 잡은 후 실행");
+            }
+        }
+    </script>
+    <input type="button" value="테스트 1" onclick="test();">
+</body>
+</html>

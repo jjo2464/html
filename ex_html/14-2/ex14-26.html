@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a[title]").css('background-color', 'yellow');
+            $("a[href='http://www.nate.com']").css('background-color', 'pink');
+            $("a[href^='mailto']").css('background-color', 'skyblue');
+            // ^ 접두사임 value가 값에 앞에 포함되어 있으면 이 요소를 선택함.
+            $("a[href$='et']").css('background-color', 'orange');
+            // $ 접미사임 value가 값에 뒤에 포함되어 있으면 이 요소를 선택함.
+            $("a[href*='goog']").css('background-color', 'green');
+            // * all,,, value값이 어디든 들어가면 이 요소를 선택함.
+        });
+    </script>
+</head>
+
+<body>
+    <h1>탐색 선택자</h1>
+    <ul style="list-style: square;">
+        <li> <a href="http://www.naver.com" title="네이버 이동">네이버</a> </li>
+        <li> <a href="mailto:ciycc@naver.com">네이버 관계자에게</a> </li>
+        <li> <a href="http://www.nate.com">네이트</a> </li>
+        <li> <a href="http://www.daum.net">다음</a> </li>
+        <li> <a href="http://www.google.co.kr">구글</a> </li>
+    </ul>
+</body>
+
+</html>

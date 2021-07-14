@@ -1,0 +1,78 @@
+<!DOCTYPE html> <!-- 45일차(18일차) 캔버스 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" style="background-color: aliceblue;" width="500" height="500"
+    onclick="drawColor(event)"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        
+        var ranX = 0;
+        var ranY = 0;
+        window.onload = function () {
+            var randomX = (Math.random() * (400 - 200)) + 200;
+            var randomY = (Math.random() * (200 - 20)) + 20;
+            ranX = Math.floor(randomX / 20);
+            ranY = Math.floor(randomY / 20);
+            console.log('ranX = ' + ranX + ', ranY = ' + ranY);
+        }
+        context.beginPath();
+        context.moveTo(200, 20);
+
+        for (var i = 1; i <= 10; i++) {
+            context.lineTo(400, i * 20);
+            for (var j = 1; j <= 11; j++) {
+                context.moveTo(180 + (j * 20), i * 20);
+                if (i == 10) {
+                    continue;
+                }
+                context.lineTo(180 + (j * 20), i * 20 + 20);
+            }
+            context.moveTo(200, i * 20 + 20);
+        }
+        context.strokeStyle = 'black';
+        context.stroke();
+
+        function drawColor(e) {
+            x = e.offsetX;
+            y = e.offsetY;
+            var divX = Math.floor(x / 20);
+            var divY = Math.floor(y / 20);
+
+            console.log('divX = ' + divX + ', divY = ' + divY);
+            console.log('x = ' + x + ', y = ' + y);
+
+            if (x >= 200 && x <= 400 && y >= 20 && y <= 200) {
+                context.beginPath();
+                context.fillStyle = 'violet';   // 선색
+                context.rect(20 * divX, 20 * divY, 20, 20);
+                context.fill();
+            }
+            if (divX == ranX && divY == ranY) {
+                context.beginPath();
+                context.fillStyle = 'black';   // 선색
+                context.rect(20 * divX, 20 * divY, 20, 20);
+                context.fill();
+                alert('지뢰 밟음');
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

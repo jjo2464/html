@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 55일차(28일차) 14장 jQuery 54일은 자습해서 패스-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_list {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            overflow: scroll;
+        }
+    </style>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        var v_tbName = "Board";
+
+        $(document).ready(function () {
+            $("#id_sch").on("click", function () {        // 셀렉터의 선택된 값을 가져옴
+                var v_pk = $("#id_category").val(); // 카테고리의 value 가져오기
+                var v_schWord = $("#id_keyword").val(); // 검색창의 value를 가져오기
+                var v_datas = JSON.parse(localStorage.getItem(v_tbName));
+                var v_localData = [];
+
+                for (var i = 0; i < v_datas.length; i++) {
+                    if (v_pk == "pk") {     // 
+                        if (v_datas[i][v_pk] == v_schWord) {  // 셀렉터에서 선택된 행의 pk와 검색창에 입력한 pk 값과 같으면
+                            v_localData.push(v_datas[i]);       // 배열 v_localData 에 넣음    
+                        }
+                    }else{  // pk를 입력했을 때와 그렇지 않을 때를 나눠놓은 이유는 pk는 숫자로 정확하게 맞아떨어질 때를 설정해놓았는데 pk가 아닌 나머지는 전체 문자 중 일부만 쳐도 그에 맞는 것들을 출력할 수 있게
+                        if(v_datas[i][v_pk].indexOf(v_schWord) != -1){      // indexOf 매개변수가 해당 객체 안에 포함 되어있다고 하면 -1 이 아닌 해당되는 길이의 인덱스값을 반환함.
+                            v_localData.push(v_datas[i]);
+                        }   
+                    }
+                }
+                if(v_localData.length == 0 && v_schWord == ""){
+                    alert("검색 데이터가 없음");            // 공백으로 입력했을 때
+                    f_list(v_datas);
+                }else if (v_localData.length == 0){
+                    alert("잘못 검색했습니다.");        // 잘못 입력 했을 때
+                    f_list(v_datas);
+                }else{          // 위를 제외한 정상적인 루트들을 실행
+                    f_list(v_localData);
+                }
+            });
+
+            $("#id_list").on("click", "tr", function(){
+                var v_datas = JSON.parse(localStorage.getItem(v_tbName));
+                var value = $(this).children("td:eq(0)").text();
+                alert(value + "번 째 방명록이 삭제 되었습니다.");
+                for(var i = 0; i < v_datas.length; i++){
+                    if(value == v_datas[i].pk){
+                        v_datas.splice(i, 1);
+                    }
+                }
+                localStorage.setItem(v_tbName, JSON.stringify(v_datas));
+                v_datas = JSON.parse(localStorage.getItem(v_tbName));
+                f_list(v_datas);
+            });
+        });
+
+
+        window.onload = function () {   
+            var v_datas = JSON.parse(localStorage.getItem(v_tbName));
+            f_list(v_datas);
+        }
+        function f_list(v_datas) {       // 방명록 리스트생성
+            var v_tbStr = "<table width=480 border=1px>";
+            for (var i = 0; i < v_datas.length; i++) {
+                v_tbStr += "<tr>";
+                v_tbStr += "<td>" + v_datas[i].pk + "</td>";
+                v_tbStr += "<td>" + v_datas[i].name + "</td>";
+                v_tbStr += "<td>" + v_datas[i].content + "</td>";
+                v_tbStr += "<td>" + v_datas[i].date + "</td>";
+            }
+            v_tbStr += "</table>";
+            document.getElementById("id_list").innerHTML = v_tbStr;
+        }
+    </script>
+</head>
+
+<body>
+    <select name="" id="id_category">
+        <!-- ex14-6.html 방명록에서 쌓이는 로컬스토리지를 기준으로함 -->
+        <option value="pk">글번호</option>
+        <option value="name">이름</option>
+        <option value="content">글내용</option>
+    </select>
+
+    <input type="text" id="id_keyword" value="">
+    <input type="button" value="검색" id="id_sch">
+    <div id="id_list"></div>
+</body>
+
+</html>

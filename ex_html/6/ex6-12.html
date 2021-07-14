@@ -1,0 +1,52 @@
+<!DOCTYPE html>          <!-- 35일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문 사용해서 표 만들기</title>
+</head>
+<body>
+    <h3>for문 원하는 표의 크기를 입력받아 그려주세요.</h3>
+    <hr>
+    <script>
+        var hang = prompt("몇 행?", "only number");     /* 행 물어보기 */
+
+        while(hang != null || col != null){
+            if(hang != parseInt(hang)){         /* 행이 숫자가 입력되었는지 질문하기 */
+                alert("행을 숫자로 다시 입력해주세요.");
+                hang = prompt("몇 행?", "only number");         
+            }else{
+                var col = prompt("몇 열?", "only number");  /* 행이 다 끝나면 열 물어보기 */
+
+                if(col != parseInt(col)){
+                    alert("열을 숫자로 다시 입력해주세요.");
+                }else{
+                    document.write("<table border='1'>");
+                    document.write("<thead> <tr>")
+                    for(var sub = 1; sub <= col; sub++){
+                        document.write("<th>" + sub + "열");
+                    }
+                    document.write("</tr> </thead>")
+                    for(var tr = 1; tr <= hang; tr++){
+                        document.write("<tr>")
+
+                        for(var td = 1; td <= col; td++){
+                            document.write("<td>" + tr + "행 " + td + "열");
+                        }
+                        
+                        document.write("</tr>")
+                    }
+                    document.write("</table>")
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- <thead>
+    <tr>
+    <th>사이트</th><th>주소</th>
+    <tr>
+</thead> -->

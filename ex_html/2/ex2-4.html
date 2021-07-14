@@ -1,0 +1,28 @@
+<!DOCTYPE html>     <!-- 31days -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe 실습예제</title>
+</head>
+<body>                  <!-- video는 경로지정이 가능하지만 iframe 에서 source로 동영상을 넣을때는 해당 html 파일과 같은 위치에 있는 파일들만 가능함. -->
+    <h3>iframe 예제 실습합니다.</h3>
+    <hr>            <!-- iframe 은 화면 내부에 틀을 만들어 따로 출력하는 것 -->   
+    <iframe 
+    src="iublue.webm" name="아이유" width="300" height="300">
+        첫번째 IFrame
+    </iframe>
+    <iframe src="IU_Celebrity.webm" name="아이유" width="300" height="300"></iframe>
+    <iframe src="ex1-1.html" name="첫번째실습"   width="300" height="300"></iframe> 
+    <iframe src="ex2-3.html" name="여섯번째 실습" width="300" height="300"></iframe>
+    <br><br><br><br><br><br>
+    <hr>
+      <!-- 비디오 타입을 읽지 못한다면 type="video/mp4" 와 같이 직접 정의해주면 된다. -->
+    비디오 삽입 예제 <br>
+    아이유 블루밍 / autoplay 로 자동시작임. <br>          
+    <video src="video/IU_Celebrity.webm" width="300" height="300" controls> 브라우저가 video 태그를 지원하지 않습니다.</video>
+    <video src="video/iublue.webm" width="300" height="300" controls autoplay loop> 브라우저가 video 태그를 지원하지 않습니다.</video>            <!-- 이 조건을 반복재생하는 loop -->
+    <video src="/ex_html/video/IU_Celebrity.webm"></video>
+</body>
+</html>

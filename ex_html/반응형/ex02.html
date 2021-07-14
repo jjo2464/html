@@ -1,0 +1,47 @@
+<!DOCTYPE html>    <!-- 44일차(17일차)  반응형.ppt -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 가변 글꼴
+        px 는 기본적으로 사용되는 단위(픽셀단위로 고정값)
+        em 은 부모의 요소를 기준으로 크기를 정함
+        1em = 16px = 100% = 12pt
+         */
+        body{
+            font-size: 16px;
+        }
+        #main_div{
+            font-size: 1.5em;
+        }
+        p{
+            font-size: 2em;
+        }
+        /* rem 맨 처음 시조 부모의 영향만을 받음 */
+        span{
+            font-size: 1.5rem;
+        }
+        /* 반응형 폰트 vw(viewport width) vh(viewport height)
+        윈도우 해상도가 아닌 현재 브라우저의 창의 크기를 기준으로 변형
+        1vw의 크기는 px로 현재 창의 크기를 1000px 라고 가정하고 1vw는 100 분의 1 사이즈
+        10px가 됌. */
+        #vw_div{
+            font-size: 1vw; font-size: 5vh; 
+        }
+    </style>
+</head>
+body 전체에 기본 폰트 16px 설정
+<body>
+    <div id="main_div">
+        div에 1.5 em ==> 24
+        <p>p에 2em을 주면 24 * 2  = 48px</p>
+        <span>rem은 시조부모의 영향만을 받음 16(px) * 2(em) 만 함.</span>
+    </div>
+    <div id="vw_div">
+        <p>반응형 폰트</p>
+    </div>
+</body>
+</html>

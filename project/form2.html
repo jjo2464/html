@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 쿠키 가져오기
+        function GetCookie(name) {
+            var str = name + "=";
+            var pairs = document.cookie.split(";");
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].trim();
+                var unit = pair.split("=");
+                if (unit[0] == name)
+                    return unescape(unit[1]);
+            }
+            return null;
+        }
+
+        // 쿠키 만들기
+        function SetCookie(name, value, expire) {
+            var cookieStr = name + "=" + value +
+                ((expire == null) ? "" : (";expiers=" + expire.toGMTString()));     //삼항연산자
+            document.cookie = cookieStr;
+        }
+
+        // 쿠키 삭제하기
+        function DeleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+        }
+
+    </script>
+    <style>
+        form {
+            height: 800px;
+        }
+
+        input {
+            width: 300px;
+            height: 20px;
+            /* border: 3px solid; */
+            border-radius: 15%;
+            margin-left: 40%;
+            margin-top: 5%;
+        }
+
+        button {
+            width: 60px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 25%;
+        }
+
+        form #logoImg {
+            margin-left: 45%;
+            width: 200px;
+            height: 100px;
+        }
+
+        #ingame {
+            margin-left: 17%;
+            width: 70%;
+            height: 440px;
+        }
+        #ingame div div{
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body onload="changeBack();">
+
+    <form >
+        <img src="images/back.png" alt="" style="background-color: black;" id="logoImg"> <br>
+        <input type="text" name="" id="user_id" value="">
+        <button onclick="urlMove(event) ">검색</button>
+        <div id="ingame"></div>
+    </form>
+</body>
+
+
+<script>
+    var gameUrl;
+    function changeBack(){
+        var logo = document.getElementById("logoImg");
+        var imgurl = GetCookie("gameName");
+        logo.src = imgurl + "Logo.png";
+        $('body').css('background-image', 'url(' + imgurl + 'back.png)');
+        $('body').css('background-size', '100% 100%');
+
+        if(GetCookie("gameName") == 'images/lol'){
+            gameUrl = 'https://www.op.gg/summoner/userName=';
+        }else if(GetCookie("gameName") == 'images/sudden'){
+            gameUrl = 'http://sa.nexon.com/ranking/individual/rank.aspx?n4PageNo=1&strSearch=';
+        }else if(GetCookie("gameName") == 'images/star'){
+            gameUrl = 'https://star.cono.kr/kr/';
+        }else if(GetCookie("gameName") == 'images/maple'){
+            gameUrl = 'https://maplestory.nexon.com/Ranking/World/Total?c=';
+        }else if(GetCookie("gameName") == 'images/battle'){
+            gameUrl = 'https://pubg.op.gg/user/';
+        }
+
+    }
+    function urlMove(e) {
+        e.preventDefault();
+        var user_id = document.getElementById("user_id").value;
+        var userInfo = document.getElementById('ingame');
+        userInfo.innerHTML = "";
+        if(gameUrl == null){
+            alert("개발 중입니다.");
+            location.reload();
+        }
+
+        $.ajax({
+            url: 'http://localhost:3000/game' 
+            , data:{"user":encodeURI(user_id), 'url':gameUrl, 'type':GetCookie("gameName")}
+            , dataType: "JSON"
+                , success: function (data) {
+                    // alert(data.length);
+                    // console.log(data);
+                    // 롤
+                    if(data.length == 3){
+                        for(var i = 0; i < data.length; i++){
+                            // console.log(data[i]);
+                            var outDiv = document.createElement("div");
+                            for(var j = 0; j < 4; j++){
+                                var inDiv = document.createElement('div');
+                                inDiv.style.display = 'inline-block';
+                                try{
+                                    inDiv.innerHTML = data[i][j];
+                                }catch(e){
+                                    alert("최근 전적이 없습니다..");
+                                }
+                                outDiv.append(inDiv);
+                            }
+                            outDiv.style.border = "2px black solid";
+                            if($('.GameResult:eq(' + i + ')').html() == 'Victory'){
+                                alert("승리");
+                            }
+                            userInfo.append(outDiv);
+                            var num = $('.GameResult').eq(i).text().indexOf("Victory");
+                            if(num != -1){      // 승리
+                                outDiv.style.backgroundColor = '#a3cfec';
+                            }else{
+                                outDiv.style.backgroundColor = '#e2b6b3';
+                            }
+                            $('#ingame div div:nth-child(2)').children('.ChampionImage').css('display', 'inline-block');
+                            $('#ingame div div:nth-child(2)').children('.SummonerSpell').css('display', 'inline-block');
+                            $('#ingame div div:nth-child(2)').children('.Runes').css('display', 'inline-block');
+                        }
+                    // 서든어택
+                    }else if(data.length == 4){
+                        for(var i = 0; i < data.length; i++){
+                            var inDiv = document.createElement("div");
+                            inDiv.style.display = 'inline-block';
+                            inDiv.style.marginRight = '30px';
+                            inDiv.style.marginLeft = '10px';
+                            inDiv.innerHTML = data[i][i];
+                            userInfo.append(inDiv);
+                        }
+                        userInfo.style.border = "2px black solid";
+                        userInfo.style.backgroundColor = '#dde5d0';
+                        userInfo.style.height = '100px';
+                    // 스타
+                    }else if(data.length == 5){
+                        for(var i = 0; i < data.length; i++){
+                            var inDiv = document.createElement("div");
+                            inDiv.style.display = 'inline-block';
+                            inDiv.innerHTML = data[i][i];
+                            inDiv.style.marginRight = '30px';
+                            inDiv.style.marginLeft = '10px';
+                            userInfo.append(inDiv);
+                        }
+                        userInfo.style.border = "2px black solid";
+                        userInfo.style.backgroundColor = '#dde5d0';
+                        userInfo.style.height = '100px';
+                    // 메이플
+                    }else if(data.length == 2){
+                        for(var i = 0; i < data.length; i++){
+                            var inDiv = document.createElement("div");
+                            inDiv.style.display = 'inline-block';
+                            inDiv.innerHTML = data[i][i];
+                            userInfo.append(inDiv);
+                            inDiv.style.marginLeft = '30%';
+                        }
+                        $('dt').css('margin-left', '20%');
+                        
+                        // $('.bg').css('position', 'fixed');
+                        // $('.bg').css('left','530px');
+                        $('.bg').css('display','none');
+
+                        $('#ingame div:eq(1)').css('position', 'fixed');
+                        $('#ingame div:eq(1)').css('position', 'fixed');
+                        $('#ingame div:eq(1)').css('bottom', '300px');
+                        $('#ingame div:eq(1)').css('margin-left', '0');
+                    // 배틀그라운드
+                    }else if(data.length == 6){
+                        for(var i = 0; i < data.length - 3; i++){
+                            var outDiv = document.createElement("div");
+                            for(var j = 0; j < 6; j++){
+                                var inDiv = document.createElement('div');
+                                inDiv.style.display = 'inline-block';
+                                try{
+                                    inDiv.innerHTML = data[i][j];
+                                }catch(e){
+                                    alert("최근 전적이 없습니다..");
+                                }
+                                inDiv.setAttribute('class', j + 'class');
+                                outDiv.append(inDiv);
+                                outDiv.setAttribute('id', i + "id");
+                            }
+                            outDiv.style.border = "2px black solid";
+                            userInfo.append(outDiv);
+                        }
+                        for(var i = 0; i < 3; i++){        
+                            var out = document.getElementById(i + 'id');
+                            var rank = $('.1class').eq(i).children().children().text();
+                            rank = rank.substring(1,3);
+                            if(isNaN(Number(rank))==true){
+                                out.style.backgroundColor = '#dde5d0';
+                            }else{
+                                out.style.backgroundColor = 'white';
+                            }
+                        }
+                    // 에러
+                    }else if(data.length == 1 || data.length == 0){
+                        alert("등록된 데이터가 없습니다.");
+                        location.reload();
+                    }
+                    
+                    
+
+                }
+                , error(e) {
+                    console.log(e);
+                    alert(e);
+            }
+        });
+    }
+
+</script>
+
+</html>

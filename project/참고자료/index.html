@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            /* visibility: hidden; */
+            visibility: visible;
+            width: 250px;
+            height: 50px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            background: #eee;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body onload="pick()">
+    <!-- <button id="id_button"  onclick="log_in();">로그인</button> -->
+    <script>
+        function GetCookie(name) {              // 쿠기 url에서 username의 값만 뽑아냄.
+            var str = name + "=";
+            var pairs = document.cookie.split(";"); // 쿠키문자열을 ;을 경계로 분할
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].trim(); // 쿠키 앞뒤의 빈칸 제거
+                var unit = pair.split("=");
+                if (unit[0] == name)
+                    return unescape(unit[1]);
+            }
+            return null;
+        }
+        function pick() {
+            var cnt = 1;
+            var newDIV = document.createElement("div");
+            var newDIV2 = document.createElement("div");
+            var btn = document.createElement("button");
+
+            var rere = function () {
+                clearInterval(a);
+                newDIV.innerHTML = "로그인 하시오";
+                newDIV2.innerHTML = "접속 경과시간 : " + cnt + "초 지남";
+                btn.innerHTML = '로그인';
+                btn.setAttribute("onclick", "window.open('login.html', '_blank, left=300, top=300, width=500, height=300')");
+                document.body.appendChild(newDIV);
+                document.body.appendChild(newDIV2);
+                document.body.appendChild(btn);
+            }
+
+            if (GetCookie("username") != null) {
+                console.log(GetCookie("username"));
+                newDIV2.innerHTML = GetCookie("username") + "접속을 환영합니다. <br>";
+                document.body.appendChild(newDIV2);
+                var a = setInterval(() => {
+                    newDIV.innerHTML = '접속 경과 시간 : ' + cnt + "초 지남 <br>";
+                    document.body.appendChild(newDIV);
+                    if (cnt >= 60) {
+                        rere();
+                    }
+                    cnt++;
+                }, 1000);
+            } else {
+                newDIV.innerHTML = "로그인 하시오";
+                btn.innerHTML = '로그인';
+                btn.setAttribute("onclick", "window.open('login.html', '_blank, left=300, top=300, width=500, height=300')");
+                document.body.appendChild(newDIV);
+                document.body.appendChild(btn);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>       <!-- 39일차(12일차) 9장 이벤트 기초 및 활용 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습 문제</title>
+    <script>
+        var cnt = 1;
+        var nonstop;
+        function clicks(){
+            var img = document.getElementById("id_img");
+            var sec = 0;
+            var secc = setInterval(function(){
+                sec++;
+                console.log(sec);
+                if(sec < 5){
+                    if(cnt >= 4){
+                        cnt = 1;
+                    }
+                    img.src = '/ex_html/images/abc0' + cnt++  + '.JPG';
+                }else {  clearInterval(secc); }
+            }, 1000);
+            
+            if(clearInterval(secc)){
+                secc2 = setInterval(function(){
+                    sec++;
+                    console.log(sec);
+                    if(sec < 10){
+                        if(cnt >= 4){
+                            cnt = 1;
+                        }
+                        img.src = '/ex_html/images/abc0' + cnt++  + '.JPG';
+                    }else {  clearInterval(secc2); }
+                }, 500);
+            }
+            console.log(sec);
+
+        }
+        function imgnext(){
+            var img = document.getElementById("id_img");
+            if(cnt < 3){
+                cnt += 1;
+            }else {cnt = 1;}
+            img.src = '/ex_html/images/abc0' + cnt  + '.JPG';
+        }
+        function imgPre(){
+            var img = document.getElementById("id_img");
+            if(cnt <= 3 && cnt > 1){
+                cnt -= 1;
+            }else {cnt = 3;}
+            img.src = '/ex_html/images/abc0' + cnt  + '.JPG';
+        }
+        function imgstop(){
+            clearInterval(nonstop);
+        }
+    </script>
+</head>
+<body>
+    <img id="id_img" src="/ex_html/images/abc01.JPG" alt="" width="200px" height="200px" onmousedown="clicks()">
+    <br>
+    <button onclick="imgnext()">다음</button>        <button onclick="imgPre()">이전</button> <button onclick="imgstop()">멈춤</button>
+</body>
+</html>

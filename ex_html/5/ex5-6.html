@@ -1,0 +1,51 @@
+<!DOCTYPE html>     <!-- 34일차 고급 CSS -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 5-11 스타일로 폼 꾸미기!</title>
+    <style>
+        input[type=text]{ /* text 창에만 적용한다는 뜻 */
+            color: red;
+        } 
+        input:hover, textarea a:hover{ /* 마우스가 올라갈 때 */
+            background: aliceblue;
+        }
+        input[type=text]:focus, input[type=email]:focus{    /* 포커스가.. 잡힐 때? */
+            font-size: 150%;
+        }
+        label{
+            display: block; /* 새 라인에서 시작! */
+            padding: 10px;
+        }
+        label span{
+            float: left;
+            width: 90px;
+            text-align: right;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>CONTACT US</h3>
+    <hr>
+    <form action="">
+        <label for="">
+            <span>Name</span> <input type="text" placeholder="Elvis"> <br>
+        </label>
+        <label for="">
+            <span>Email</span> <input type="email" placeholder="elvis@naver.com">
+        </label>
+        <label for="">
+            <span>Comment</span> <textarea placeholder="메세지를 남겨주세요."></textarea>
+        </label>
+        <label for="">
+            <span></span> <input type="submit" value="submit">
+        </label>
+    </form>
+    <!-- 이 다음 수업이 원래 애니메이션인데, 자바스크립트를 다루고 배우기로 함. -->
+    <!-- 애니메이션 참조 사이트 : https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Animations/Using_CSS_animations -->
+
+</body>
+</html>

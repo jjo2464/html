@@ -1,0 +1,256 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-6에서 저장한 방명록 데이터를 기반으로 여기서 출력</title>
+    <script>
+         // 쿠키 가져오기
+        function GetCookie(name) {            
+            var str = name + "=";
+            var pairs = document.cookie.split(";"); 
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].trim(); 
+                var unit = pair.split("=");
+                if (unit[0] == name)
+                    return unescape(unit[1]);
+            }
+            return null;
+        }
+    </script>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        table,
+        tr,
+        td {
+            border: 1px solid white;
+            width: 520px;
+            color: white;
+        }
+
+        #center {
+            margin-left: 60%;
+            overflow-y: scroll;
+            width: 70%;
+            height: 100%;
+            display: inline-block;
+            position: absolute;
+            top: 30%;
+        }
+        #id_form{
+            margin-left: 60%;
+            width: 70%;
+            height: 20%;
+            position: absolute;
+            top: 0%;
+        }
+        #drawChart{
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body onload="drawGraph();">
+    <h1>게시판</h1>
+    <div id="div_1">
+        <form action="#" id="id_form">
+            <table>
+                <tr>
+                    <p><td colspan="4">방명록</td></p>
+                </tr>
+                <tr>
+                    <td>이름</td> <td><p id="b_name"></p></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <textarea name="" id="b_content" cols="70" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" onclick="fn_save();" value="저장" style="width: 150px;" >
+                        <input type="reset" value="취소" id="b_cancle" style="width: 150px;">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="center">
+    </div>
+    <div id="drawChart">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        var gameName = null;
+        // 게임이름
+        if(localStorage.getItem(GetCookie("username") + "VoteCnt") != null){
+            switch (Number(localStorage.getItem(GetCookie("username") + "VoteCnt"))) {
+                case 0:
+                    gameName = "리그오브레전드";
+                    break;
+                case 1:
+                    gameName = "서든어택";
+                    break;
+                case 2:
+                    gameName = "피파";
+                    break;
+                case 3:
+                    gameName = "스타크래프트";
+                    break;
+                case 4:
+                    gameName = "카트라이더";                
+                    break;
+                case 5:
+                    gameName = "메이플스토리";
+                    break;
+                case 6:
+                    gameName = "배틀그라운드";
+                    break;
+                case 7:
+                    gameName = "오버워치";                
+                    break;
+                default:
+                    gameName = "";
+                    break;
+            }
+        }else{
+            gameName = "";
+        }
+        var b_name = null;
+        function drawGraph(){
+            // 차트.파라미터별 cnt 넣기
+            var chartCnt = [];
+            for(var i = 0; i < 8; i++){
+                if(localStorage.getItem("game" + i) == null){
+                    chartCnt.push(0);
+                }else{
+                    var num = Number(localStorage.getItem("game" + i));
+                    chartCnt.push(num);
+                }
+
+            }
+            // 차트 그리기
+            $(document).ready(function () {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var data = {
+                type: 'doughnut'
+                , data: {
+                    labels: ['롤', '서든', '피파', '스타', '카트', '메이플', '배그', '오버워치']
+                    , datasets: [{
+                        label: 'title'
+                        , backgroundColor:[ 'rgb(0,0,0)','rgb(210,50,50)','rgb(150,80,80)','rgb(120,0,120)','rgb(140,210,140)','rgb(0,180,180)','rgb(1,70,70)','rgb(210,210,210)']
+                        , file: false
+                        , borderColor: 'rgb(255,99,132)'
+                        , lineTension: 0.1
+                        , data: [chartCnt[0],chartCnt[1],chartCnt[2],chartCnt[3],chartCnt[4],chartCnt[5],chartCnt[6],chartCnt[7]]
+                    }]
+                },
+                Options: {}
+            }
+            var chart = new Chart(ctx, data);
+            });
+
+            // 게시글의 이름칸에 이름 넣기.
+            td_name = document.getElementById("b_name");    
+            if(localStorage.getItem(GetCookie("username") + "VoteCnt") == null){          
+                b_name = GetCookie("username");   
+                td_name.innerHTML = b_name;
+            }else{
+                b_name = GetCookie("username");   
+                td_name.innerHTML = b_name  + " " + gameName;        
+            }
+
+        }
+
+        // 방명록 적기
+        function fn_save(){
+            var b_content = document.getElementById("b_content").value 
+
+            var v_tbName = 'Board';        
+            var v_tableData = [];
+            var v_pk = 1;
+
+            if(localStorage.getItem(v_tbName)){            
+                v_tableData = JSON.parse(localStorage.getItem(v_tbName));
+                console.log(v_tableData);
+                if(v_tableData.length != 0){               
+                    v_pk = v_tableData[v_tableData.length - 1].pk + 1;
+                }
+            }
+            var v_gul = {};     // 오브젝트 형식으로 생성 (객체)               
+            v_gul.pk = v_pk;
+            v_gul.name = b_name;
+            v_gul.content = b_content;
+            v_gul.game = gameName;
+            v_gul.date = (new Date()).toLocaleDateString();
+
+            v_tableData.push(v_gul);        // [{}] 형태의 JSON 방식으로 입력받은 데이터를 세팅
+            localStorage.setItem(v_tbName, JSON.stringify(v_tableData));
+            alert("정상적으로 저장");
+            document.getElementById("id_form").reset();
+            location.reload();
+        }
+
+        //방명록 보기
+        var v_disp = document.getElementById("center");
+        var v_tbName = 'Board';
+        var v_localData = JSON.parse(localStorage.getItem(v_tbName));         
+
+        var v_total = v_localData.length;
+        var v_tbStr = "";
+        v_tbStr = "<br><br>";
+        v_tbStr += "<table>";
+        v_tbStr += "<tr> <td>순번</td><td>이름</td><td>내용</td></tr>";
+        if (v_total != 0) {
+            for (var i = 0; i < v_total; i++) {
+                if(v_localData[i].game == null){
+                    v_localData[i].game = "";
+                }
+                v_tbStr += "<tr>";
+                v_tbStr += "<td>" + (i + 1) + "</td>";         
+                v_tbStr += "<td>" + v_localData[i].name + v_localData[i].game + "</td>";  
+                v_tbStr += "<td>" + v_localData[i].content;   
+                v_tbStr += "(" + v_localData[i].date + ")";
+                v_tbStr += '<button onclick = "fn_delete(' + v_localData[i].pk + ');">삭제</button></td>';
+                v_tbStr += "</tr>";
+            }
+            v_tbStr += "</table>";
+            v_disp.innerHTML = v_tbStr;
+        } else {
+            v_tbStr += "</table>";
+            var btn = document.createElement("button");
+            btn.innerHTML = "돌아가기";
+            btn.setAttribute("onclick", "window.open('main.html', '_blank, left=300, top=300, width=500, height=300')");
+            v_disp.innerHTML = v_tbStr;
+            v_disp.appendChild(btn);
+        }
+
+        function fn_delete(delValue) {
+            var delName = null;
+            for(var i = 0; i < v_localData.length; i++){      
+                if(v_localData[i].pk == delValue){
+                    delName = v_localData[i].name;                
+                }
+            }
+            if(delName == String(GetCookie("username"))){         
+                for (var i = 0; i < v_localData.length; i++) {
+                    if (v_localData[i].pk == delValue) {
+                        v_localData.splice(i, 1);
+                    }
+                }
+              
+                localStorage.setItem(v_tbName, JSON.stringify(v_localData));    
+                console.log(JSON.stringify(v_localData));
+                location.reload();  
+            }else{
+                alert("해당 게시글의 유저명과 일치하지 않습니다.");
+            }
+        }
+    </script>
+</body>
+
+</html>

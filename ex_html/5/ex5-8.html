@@ -1,0 +1,67 @@
+<!DOCTYPE html>      <!-- 42일차(15일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        #nav #gnb ul{
+            overflow: hidden;
+            /* property: all // 해당 요소 모든 속성에 적용 */
+            /* property: background-color // 해당 요소 배경색에 적용 */
+            /* property: width, height // 해당 요소 높이에 트랜지션 적용 */
+        }
+        #nav #gnb ul li{
+            float: left; width: 100px; height: 50px;
+            margin-right: 5px; text-align: center; background-color: #a0b03b;
+            transition-duration: 5s, 2s;    /* 5초는 애니메이션 수행시간, 2초는 복귀시간 */
+        }
+        /* delay 트랜지션 지연 시간 */
+        #nav #gnb ul li:nth-child(1){
+            transition-delay: 2s;
+        }
+        /* ease 천천히 시작, 빨라지다가 마지막은 천천히 default */
+        /* ease-in 시작을 느리게 */
+        /* ease-out 느리게 끝냄 */
+        /* ease-in-out 느리게 시작하고 느리게 끝냄 */
+        /* linear 시작부터 끝가지 똑같은 속도로 진행 */
+        #nav #gnb ul li:nth-child(2){ transition-timing-function: ease;}
+        #nav #gnb ul li:nth-child(3){ transition-timing-function: ease-in;}
+        #nav #gnb ul li:nth-child(4){ transition-timing-function: ease-out;}
+        #nav #gnb ul li:nth-child(5){ transition-timing-function: ease-in-out;}
+        /* delay 대상을 설정 */
+        #nav #gnb ul li:nth-child(1):hover {
+            height: 250px; background-color: #353a17; color: #ffffff;
+        }
+        #nav #gnb ul li:nth-child(2):hover {
+            height: 250px; background-color: #173b37; color: #ffffff;
+        }
+        #nav #gnb ul li:nth-child(3):hover {
+            height: 250px; background-color: #17173b; color: #ffffff;
+        }
+        #nav #gnb ul li:nth-child(4):hover {
+            height: 250px; background-color: #3b172b; color: #ffffff;
+        }
+        #nav #gnb ul li:nth-child(5):hover {
+            height: 250px; background-color: #3b1717; color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div id="gnb">
+            <ul>
+                <li>GNB_01</li>
+                <li>GNB_02</li>
+                <li>GNB_03</li>
+                <li>GNB_04</li>
+                <li>GNB_05</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

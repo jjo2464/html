@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 53일차(26일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중요중요</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(':text').css("border", '1px dashed #f00');
+            $(':checked').attr('checked', false);           // 기존에 체크되어 있게 설정했는데 여기서 속성값을 false으로 줘서 체크가 해제됌.
+            $(':selected').attr('selected', false);         // 기존에 select 되어있던 네이트가 select 칸에 출력이 되어야하는데 false 로 해놓아서 맨 위에 있는 네이버에 select 칸에 나옴.
+        });
+    </script>
+</head>
+
+<body>
+    <h1>탐색 선택자</h1>
+    <p>
+        <label for="user_name">이름</label>
+        <input type="text" name="user_name" id="user_name">
+    </p>
+    <p>
+        <input type="checkbox" name="accept" id="accept" checked='checked'>
+        <label for="accept">사용자 동의</label>
+    </p>
+    <p>
+        <select name="rel_site" id="resl_site">
+            <option value="네이버">네이버</option>
+            <option value="네이트"  selected='selected'>네이트</option>
+        </select>
+    </p>
+</body>
+
+</html>

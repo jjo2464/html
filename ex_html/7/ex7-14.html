@@ -1,0 +1,31 @@
+<!DOCTYPE html>              <!-- 36일차(9일차) 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체</title>
+</head>
+<body>
+    <h3>페이지 방문 초시간이 짝수이면 violet 홀수면 lightskyblue</h3>
+    <hr>
+    <script>
+        function timer(){
+            var current = new Date();
+
+            if(current.getSeconds() % 2 == 0){
+                document.body.style.backgroundColor = 'violet';
+            }else{
+                document.body.style.backgroundColor = 'lightskyblue';                
+            }
+            document.write("현재 시간 = ");
+            document.write(current.getHours() + "시");
+            document.write(current.getMinutes() + "분");
+            document.write(current.getSeconds() + "초");
+            document.write("<br>");
+        }
+        setInterval(timer, 1000);
+    </script>
+    
+</body>
+</html>

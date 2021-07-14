@@ -1,0 +1,46 @@
+<!DOCTYPE html>           <!-- 43일차(16일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            position: relative;
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        #container img{
+            margin: 0; padding: 0; float: left; z-index: 5;
+        }
+        #circle1{
+            position: absolute;
+            width: 600px;
+            border-radius: 750px;
+            height: 600px;
+            background: black;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+            z-index: 10;
+        }
+        #circle1 p{
+            font-size: 70px;
+            color: white;
+            text-align: center;
+        }
+        #container:hover #circle1{
+            opacity: 0;
+            transform: translateY(-500px);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="/ex_html/images/earth.png" width="600px" id="earth" alt="">
+        <div id="circle1">
+            <p>지구 입니다.</p>
+        </div>
+    </div>
+</body>
+</html>

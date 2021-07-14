@@ -1,0 +1,112 @@
+<!DOCTYPE html>           <!-- 36일차(9일차) 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 연습문제</title>
+</head>
+<body>
+    <h1>컴퓨터 가위, 바위, 보 맞추기</h1>
+
+    <script>
+        var my = prompt("가위, 바위, 보");
+        var cnt = 0;
+        
+        function mynums(i){
+            if(i == '가위'){ return 1};
+            if(i == '바위'){ return 2};
+            if(i == '보'){ return 3};
+        };
+        mynumber = mynums(my);
+        while(my != null){
+            if(my == '보'){
+                my = '"/ex_html/images/math_user_3.jpg"';
+                break;
+            }else if(my == '가위'){
+                my = '"/ex_html/images/math_user_1.jpg"';
+                break;
+            }else if(my == '바위'){
+                my = '"/ex_html/images/math_user_2.jpg"';
+                break;
+            }else{
+                alert("가위, 바위, 보가 아닙니다. 다시 입력하세요.");
+                var my = prompt("가위, 바위, 보");
+            }
+        }
+        var i =  Math.ceil( Math.random() * 3 );
+        function nums(i){
+            if(i == 1){ return '"/ex_html/images/math_com_1.jpg"'};
+            if(i == 2){ return '"/ex_html/images/math_com_2.jpg"'};
+            if(i == 3){ return '"/ex_html/images/math_com_3.jpg"'};
+        };
+        /* 
+        바위 = 2 가위 = 1 보 = 3
+        컴      나  (이기는경우)   축하합니다. = '"images/game_1.jpg"'       
+        바위2   보3
+        가위1   바위2
+        보3     가위1
+        ==============================
+        컴      나  (비기는경우)    한번 더! = '"images/game_3.jpg"'       
+        바위2   바위2
+        가위1   가위1
+        보3     보3
+        ==============================
+        컴      나  (지는경우)  한번 더! = '"images/game_3.jpg"'       
+        바위2   가위1
+        가위1   보3
+        보3     바위2                   // 이기는 경우 빼고 cnt를 1씩 증가시키고 10번이 채워지면 다음 기회에 = '"images/game_2.jpg"'       
+        */
+        function winlose(com, me){          // 컴퓨터는 i 숫자를 사용해서 출력하니 com = i, me =  mynums(my)
+            if(cnt > 3){
+                return '"/ex_html/images/game_2.jpg"';       // 다음기회에!
+            }else{
+                switch(com){
+                    case 1 : 
+                        if(me == 1){
+                            cnt += 1;
+                            return '"/ex_html/images/game_3.jpg"'; 
+                        }else if(me == 2){
+                            return '"/ex_html/images/game_1.jpg"' ;
+                        }else{
+                            cnt += 1;
+                            return '"/ex_html/images/game_3.jpg"' ;
+                        }
+                        break;
+                    case 2 : 
+                        if(me == 1){
+                            cnt += 1;
+                            return '"/ex_html/images/game_3.jpg"'; 
+                        }else if(me == 2){
+                            cnt += 1;
+                            return  '"/ex_html/images/game_3.jpg"'; 
+                        }else{
+                            return '"/ex_html/images/game_1.jpg"';     
+                        }
+                        break;
+                    case 3 : 
+                        if(me == 1){
+                            return '"/ex_html/images/game_1.jpg"';
+                        }else if(me == 2){
+                            cnt += 1;
+                            return '"/ex_html/images/game_3.jpg"';
+                        }else{
+                            cnt += 1;
+                            return '"/ex_html/images/game_3.jpg"';
+                        }
+                        break;
+                    default: break;
+                }
+            }
+        }
+        console.log(cnt + " 카운트 ");
+        document.write('<div>');    
+        document.write('<span>컴퓨터<img src=' + nums(i) + '></span>');           
+        document.write('<span style="font-size : 100px;">vs</span>');    
+        document.write('<span>당신<img src=' + my + '></span>');    
+        document.write('<img onClick="location.reload()" src=' + winlose(i,mynumber) + '>');    
+	    document.write('</div> <br>');
+        document.write(cnt);
+    </script>
+</body>
+</html>

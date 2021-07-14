@@ -1,0 +1,35 @@
+<!DOCTYPE html>      <!-- 34일차 6장 자바스크립트 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var 변수 정리</title>
+</head>
+<body>
+    <script>
+        var a;
+        var b, c;
+        var d = 0;
+        var e = 2, f = 4, g = 6, h;
+        var i, j = 8;
+        
+        document.writeln('a = ' + a + '<br/>');         // a,b,c 정의안됌
+        document.writeln('b = ' + b + '<br/>'); // undefined는 값을 찾을수가 없음. null과 다름.
+        document.writeln('c = ' + c + '<br/>');
+        document.writeln('d = ' + d + '<br/>');
+        document.writeln('e = ' + e + '<br/>');
+        document.writeln('f = ' + f + '<br/>');
+        document.writeln('g = ' + g + '<br/>');
+        document.writeln('h = ' + h + '<br/>');
+        document.writeln('i = ' + i + '<br/>');     // h와 i는 정의 안됌.
+        document.writeln('j = ' + j + '<br/>');
+        var k = 10;
+        var l = '문자열';
+        document.writeln('k = ' + k + '<br/>');
+        document.writeln('l = ' + l + '<br/>');
+        l = 122;
+        document.writeln('l = ' + l + '<br/>');     // 문자열에서 숫자로 바꾸어도 변함.에러안남.
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html> <!-- 39일차(12일차) 9장 이벤트 기초 및 활용 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <style>
+        div {
+            border: 1px solid black;
+            text-align: center;
+            margin: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+            padding: 15px;
+            padding-left: 8%;
+            padding-right: 8%;
+        }
+        div fieldset{
+            border: 1px solid black;            
+            padding: 5%;
+            /* padding-right: 10%; */
+            padding-left: 10%;
+            text-align: left;
+            margin: 20px;
+        }
+        fieldset.aa{
+            font-size: 17px;
+        }
+        fieldset.bb{
+            font-size: 15px;
+        }
+        .babo{
+            display: inline-block;          /*  그냥 span같은 경우는 한 라인전체를 먹고 블록과 같이 지정을 못해줌. */
+            width: 100px;                   /* 이렇게 dispaly 사이즈를 inline 블록으로 바궈주고 width크기를 맞춰줄수 있음. */
+            vertical-align: top;    
+        }
+        .legeno{
+            padding-right: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>상품 주문서</h3>        <!--  class="legeno" -->
+        <fieldset class="aa">
+            <legend style="color: violet;">개인정보</legend>
+            <span class="babo">이름</span> <input type="text" placeholder="여백없이 입력" size="20px"> <br>
+            <span class="babo">연락처</span> <input type="text" placeholder="연락가능한 번호" size="20px"> 
+        </fieldset>
+
+        <fieldset class="aa">
+            <legend style="color: violet; text-align: left;">배송지 정보</legend>
+            <span class="babo">주소</span> <input type="text" name="" id="" size="40px"> <br>
+            <span class="babo">전화번호</span>  <input type="text"> <br><br>
+            <span class="babo">메모</span> <textarea name="" id="" cols="45" rows="3"></textarea>
+        </fieldset>
+
+
+        <fieldset class="bb">
+            <legend style="color: violet; text-align: left; font-size: 17px;">주문 정보</legend>
+            <input type="checkbox" name="" id=""> 과테밀라 안티구아 (100g) <input type="number" name="" id="" value="0" style="width: 40px;"> 개 <br>
+            <input type="checkbox" name="" id=""> 인도네시아 만델링 (100g) <input type="number" name="" id=""value="0" style="width: 40px;"> 개<br>
+            <input type="checkbox" name="" id=""> 탐라는도다(블렌딩) (100g) <input type="number" name="" id=""value="0" style="width: 40px;"> 개<br>  
+        </fieldset>
+        <br>
+
+        <button>주문하기</button> <button>다시 작성</button>
+    </div>
+</body>
+</html>

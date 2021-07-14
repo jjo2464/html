@@ -1,0 +1,26 @@
+<!DOCTYPE html>           <!-- 47일차(20일차) 12장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function divide(alpha, beta){
+            if(beta == 0){
+                throw 'DivideByZeroException';
+            }else{
+                return alpha / beta;
+            }
+        }
+        try {
+            divide(10, 0);
+        } catch (exception) {
+            alert(exception + " 오류 발생함.");
+            alert("catch");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>                     <!-- 50일차(23일차) 13장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- geolocation 위치 정보 서비스를 제공하는객체
+        var geolocation = navigator.geolocation;
+        getCurrentPosition() 사용자의 현재 위치정보 반환함
+        watchPosition() 장치의 현재 위치에 대한 정보를 추가적으로 반환
+        clearWatch() 현재 진행중인 watchPosition()을 중지함. -->
+        <button onclick="getGeolocation();">위치 정보 얻기</button>
+        <div id="target"></div>
+        <script>
+            var myDiv = document.getElementById("target");
+            function getGeolocation(){
+                if(navigator.geolocation){      // 브라우저가 위치 정보 서비스를 제공한다면!
+                    navigator.geolocation.getCurrentPosition(showLocation);
+                }
+            }
+
+            function showLocation(location){
+                myDiv.innerHTML = '(위도 = ' + location.coords.latitude + ' 경도 = ' + location.coords.longitude + ')';
+                // getCurrentPosition은 메서드( 함수)
+                // 위치가 파악이 되면! 호출될 콜백 함수를 등록함. 콜백함수는 showLocation(asdsad)
+                // asdasd.coords.latitude 위도 / asdasd.coords.longitude 경도
+            }
+        </script>
+        
+</body>
+</html>

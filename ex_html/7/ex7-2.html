@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!-- 35일차 7장 자바스크립트 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제 Date 함수</title>
+    <script>
+        // 데이트 함수 사용
+        var cnt = 10;
+        var start = Date.now();
+        for(var i = 0; i < cnt; i++){
+            alert("빠르게 엔터를 누르세요.");
+        }
+        var end = Date.now();
+        var sec = (end - start) / 1000;     /* ms라 초로 다시 바꿔줌. */
+        document.writeln(sec + "초 걸림");
+    </script>
+</head>
+<body>
+    <h3>연습문제</h3>
+    <button onclick="location.reload();">다시도전</button>
+</body>
+</html>

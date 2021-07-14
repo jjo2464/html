@@ -1,0 +1,64 @@
+<!DOCTYPE html>          <!-- 42일차(15일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ex{
+            /* position: relative; */
+            width: 500px;
+            height: 150px;
+            margin: 0 auto;
+            border: 1px solid #aaa;
+            border-radius: 30px;
+            padding: 20px;
+        }
+        /* 브라우저에 따라 달라서 접두사를 붙여야함. */
+        /* webkit = 사파리, 크롬 */
+        /* moz = 모질라, 파이어폭스 */
+        /* o = 오페라 */
+        /* ms = 마이크로 소프트 */
+        #ex:hover .box{
+            -webkit-transform: rotate(720deg);
+            transform: rotate(720deg);
+            margin-left: 420px;
+        }
+        .box{
+            font-size: 12px;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            background-color: #eee;
+        }
+        .box p {
+            text-align: center;
+            padding-top: 4px;
+        }
+        #no-delay {
+            /* width: 70px; */
+            -webkit-transition-duration: 3s;
+            -moz-transition-duration: 3s;
+            -o-transition-duration: 3s;
+            transition-duration: 3s;
+            border: 1px solid #ff6a00;
+        }
+        #delay {
+            /* width: 70px; */
+            -webkit-transition-delay: 1s;
+            -moz-transition-delay: 1s;
+            -o-transition-delay: 1s;
+            transition-duration: 1s;
+            border: 1px solid #006aff;
+        }
+    </style>
+</head>
+<body>
+    <div id="ex">
+        <div id="no-delay" class="box"> <p>no-delay</p> </div>
+        <div id="delay" class="box"> <p>delay</p> </div>
+    </div>
+</body>
+</html>

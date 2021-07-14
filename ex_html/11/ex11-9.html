@@ -1,0 +1,22 @@
+<!DOCTYPE html>     <!-- 46일차(19일차) 캔버스 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="300" style="background-color: aliceblue;"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext('2d');
+
+        var img = new Image();
+        img.onload = function(){
+            context.drawImage(img, 0, 0, canvas.width, canvas.height);          // 캔버스 내부에 0,0에서부터 캔버스 크기만큼 출력 = 전체출력
+        }
+        img.src = "/ex_html/images/1.jpg";
+    </script>
+</body>
+</html>

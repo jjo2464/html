@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+
+    <script>
+        // 사용방법 1번째
+        $(document).ready(function () {
+            $("h2").click( function(){
+                $(this).hide();
+            });
+        });
+
+        // 사용방법 2번째
+        $(function () {
+
+        });
+
+        // 잘못된 사용법
+        // $("h2").click(function(){
+        // });
+    </script>
+</head>
+
+<body>
+    <h2>클릭하면 사라집니다.</h2>
+</body>
+
+</html>

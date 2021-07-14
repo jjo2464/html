@@ -1,0 +1,75 @@
+<!DOCTYPE html>            <!-- 42일차(15일차)  5장 css -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var h1;
+        var x, y;
+
+        var mouseFuc = function(e){
+            x = e.clientX;
+            y = e.clientY;
+            h1.innerHTML = 'x = ' + x + ' y = ' + y;
+            cursor.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+            cursor2.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+            cursor3.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+        }
+        window.onload = function(){
+            cursor = document.getElementById("cursor_item");
+            cursor2 = document.getElementById("cursor_item2");
+            cursor3 = document.getElementById("cursor_item3");
+            
+            h1 = document.getElementsByTagName("h1")[0];
+            document.addEventListener('mousemove', mouseFuc);
+        }
+    </script>
+    <style>
+        html{
+            cursor: none;
+        }
+        #cursor_item{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: -25px;
+            margin-left: -25px;
+            transition: all 0.4s linear;
+        }
+        #cursor_item2{
+            width: 30px;
+            height: 30px;
+            background: black;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: -25px;
+            margin-left: -25px;
+            transition: all 0.2s linear;
+        }
+        #cursor_item3{
+            width: 15px;
+            height: 15px;
+            background: violet;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: -25px;
+            margin-left: -25px;
+            transition: all linear;
+        }
+    </style>
+</head>
+<body>
+    <h1>user cursor</h1>
+    <div id="cursor_item" ></div>
+    <div id="cursor_item2" ></div>
+    <div id="cursor_item3" ></div>
+</body>
+</html>

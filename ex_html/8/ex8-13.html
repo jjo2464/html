@@ -1,0 +1,34 @@
+<!DOCTYPE html>    <!-- 38일차(11일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제 나이계산</title>
+    <link rel="stylesheet" href="/ex_html/css모음/age.css" type="text/css">
+</head>
+<body>
+    <button class="btn" onclick="calc()">나이계산하기</button>
+    <div id="result" class="show">(결과값 표시)</div>
+    <script>
+        function calc(){
+            var date = new Date();
+            var currentYear = date.getFullYear();
+            var birth = prompt('태어난 연도를 입력하세요!', 'YYYY');
+            while(birth != null){
+                if(birth.length == 4 && isNaN(birth) == false){
+                    var age = currentYear - birth;
+
+                    var divIn = document.getElementById('result');
+                    divIn.innerHTML = '당신의 나이는 ' + age + '세 입니다.';
+                    break;
+                }else{
+                    alert('4자리 숫자로 다시 입력해주세요.');
+                    var birth = prompt('태어난 연도를 입력하세요!', 'YYYY');
+
+                }
+            }
+        }
+    </script>
+</body>
+</html>

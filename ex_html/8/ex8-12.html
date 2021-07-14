@@ -1,0 +1,52 @@
+<!DOCTYPE html>          <!-- 38일차(11일차) 8장 html dom과 document -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+</head>
+<body>
+    <h3>당신의 취미는?</h3>
+    <span>독서</span><input type="checkbox" name="hobby" value="reading">
+    <span>운동</span><input type="checkbox" name="hobby" value="sports">
+    <span>웹툰</span><input type="checkbox" name="hobby" value="webtoon">
+    <span>게임</span><input type="checkbox" name="hobby" value="game">
+    <input type="button" value="클릭" onclick="f_check()">
+    <input type="button" value="전체 해제" onclick="f_false()">
+    <span>전체</span><input type="checkbox" name="all" value="all" onclick="f_true()">
+    <script>
+        function f_check(){
+            var v_hobby = document.getElementsByName('hobby');
+            var v_name = document.getElementsByTagName('span');
+            var v_out = '당신의 취미는 ';
+            for(var i = 0; i <v_hobby.length; i++){
+                if(v_hobby[i].checked){
+                    v_out += v_hobby[i].value + "(";
+                    v_out += v_name[i].innerHTML + '), ';
+                }
+            }
+            alert(v_out + "입니다.")
+        }
+        function f_false(){
+            var v_hobby = document.getElementsByName('hobby');
+            for(var i = 0; i <v_hobby.length; i++){
+                v_hobby[i].checked = false;
+            }
+        }
+        function f_true(){
+            var allC = document.getElementsByName('all');
+            var v_hobby = document.getElementsByName('hobby');
+            if(allC[0].checked == true){
+                for(var i = 0; i <v_hobby.length; i++){
+                    v_hobby[i].checked = true;
+                }
+            }else{
+                for(var i = 0; i <v_hobby.length; i++){
+                    v_hobby[i].checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

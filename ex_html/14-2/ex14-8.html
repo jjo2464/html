@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#cat").animate({left : "100px"}).animate({left : "0px"});
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img src="/ex_html/images/1574AC404D1842D81A.jpeg" width="120" height="100"
+        style="position: relative;" alt="" id="cat"> <br>
+    <button>animate()</button>
+</body>
+
+</html>

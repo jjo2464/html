@@ -1,0 +1,22 @@
+<!DOCTYPE html>      <!-- 48일차(21일차) 12장 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+</head>
+<body>
+    <h2>정규식</h2>
+    <script>
+        // 정규표현식.test('텍스트');           -> true or false 반환
+        var regType1 = /^[a-z+]{2}$/;                   // / 와 /  사이에 정규표현식을 넣음.
+        console.log(regType1.test('aaa'));      // false
+        console.log(regType1.test('aa'));       // true
+        console.log(regType1.test('123'));      // false
+        if(!regType1.test('aaa')){
+            alert("표현식이 틀렸습니다.");
+        }
+    </script>
+</body>
+</html>

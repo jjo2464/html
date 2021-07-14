@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 55일차(28일차) 14장 jQuery 54일은 자습해서 패스-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("input").click(function(){
+                // name 으로 요소에 접근 하는 법
+                // alert($("input[name=check_1]").val());  
+            });
+            $(document).on("click", 'input', function(){
+                alert($(this).is(':checked'));          // 뒤의 속성값에 따라 true or false 를 반환함.
+                alert($(this).val());
+            });
+        });
+    </script>
+</head>
+
+<body>
+    체크 1 <input type="checkbox" name="check_1" id="" value="1">
+    체크 2 <input type="checkbox" name="check_1" id="" value="2">
+    체크 3 <input type="checkbox" name="check_1" id="" value="3">
+    체크 4 <input type="checkbox" name="check_1" id="" value="4">
+</body>
+
+</html>

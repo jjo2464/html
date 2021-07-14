@@ -1,0 +1,42 @@
+<!DOCTYPE html>     <!-- 41일차(14일차)  10장 윈도우와 브라우저 관련 객체 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부모 윈도우에게 데이터 보내기</title>
+    <script>
+        function f_send(){
+            var v_input = document.getElementById('input2').value;
+            opener.document.getElementById('output1').value = v_input;
+        }
+    </script>
+</head>
+<body>
+    <article>
+        <table border="1">
+            <tr>
+                <td>부모에서 전달 : </td>
+                <td>
+                    <input type="text" id="input1">
+                </td>
+            </tr>
+            <tr>
+                <td>부모로 전달 : </td>
+                <td>
+                    <input type="text" id="input2">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="부모로 전달" onclick="f_send();"> 
+                </td>
+                <td colspan="2">
+                    <input type="button" onclick="window.close();" value="닫기">
+                </td>
+            </tr>
+        </table>
+    </article>
+    
+</body>
+</html>

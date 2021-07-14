@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                console.log($(this).parent());
+                console.log($(this).clone());
+                $(this).parent().append($(this).clone());
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="left">
+        <button id="bt1">좌측버튼</button>
+    </div>
+
+    <div class="right">
+        <button id="bt2">우측버튼</button>
+    </div>
+</body>
+
+</html>

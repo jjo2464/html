@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DOM - Create & Add Node</title>
+	<link rel="stylesheet" href="/ex_html/css모음/nameList.css">
+	<script>
+		var cnt = 0;
+		function saveName() {
+			var getName = document.getElementById('userName').value;
+			var outputName = document.getElementById('nameList');
+			var childSpan = document.createElement("p");
+
+			childSpan.innerHTML = getName;
+
+			var newButton = document.createElement('button');
+			// var newButton = document.createElement('span');
+			newButton.setAttribute("class", 'del');
+			newButton.innerHTML = '삭제';
+
+			childSpan.appendChild(newButton);
+
+			outputName.insertBefore(childSpan, outputName.firstChild);		// firstChild 자리에 넣는다는 것. (a,b)라고 하면 a는 넣을 것, b는 넣을 위치
+
+			newButton.onclick = function () {
+				var par = this.parentElement;
+				outputName.removeChild(par);
+			}
+			// childSpan.onclick = function deleteMe() {
+			// 	outputName.removeChild(this);
+			// }
+		}
+	</script>
+</head>
+
+<body>
+	<div id="container">
+		<h1>참가 신청</h1>
+		<form action="">
+			<input type="text" id="userName" placeholder="이름" required>
+			<!-- <input type="button" onclick="saveName();" value="신청"> -->
+			<button onclick="saveName(); event.preventDefault();">신청</button>
+		</form>
+		<hr>
+		<div id="nameList"></div>
+	</div>
+</body>
+
+</html>

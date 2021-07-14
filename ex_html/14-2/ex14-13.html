@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <style>
+        .container{
+            height: 80px; width: 200px; border: 1px dotted red;
+        }
+    </style>
+
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready(function () {
+            $("#bt1").click(function(){
+                $('.container').remove();       // 엘리먼트 자체를 지워버림/
+            })
+            $("#bt2").click(function(){
+                $('.container').empty();        // 내용물만 없애고 객체는 남겨둠.
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <button id="bt1">remove()</button>
+    <button id="bt2">empty()</button>
+    <div class="container">
+        <p class="hello"Hello></p>
+        <p class="goodbye">Goodbye</p>
+    </div>
+</body>
+
+</html>

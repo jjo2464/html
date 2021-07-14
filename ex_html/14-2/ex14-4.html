@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 51일차(24일차) 14장 jQuery-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQeury</title>
+    <script src="/ex_html/jquery/jquery-3.6.0.js"></script> <!-- jQeury 경로 설정. 인터넷 환경이 되지않으면 이 페이지를 저장해서 사용해도 됌. -->
+    <script>
+        $(document).ready( function(){
+            $("input").focus(function(){
+                $(this).css("background-color", "yellowgreen");
+            });
+            $("input").blur(function(){
+                $(this).css("background-color", "white");
+            })
+        })
+    </script>
+</head>
+
+<body>
+    아이디1 : <input type="text" > <br>
+    아이디2: <input type="text" >  <br>
+    아이디3 : <input type="text"> <br>    
+    아이디4 : <input type="text"> 
+
+</body>
+
+</html>
